@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<device type="emmc" idx="0">
+		<partitions>
+            <!-- eMMC Partition 0 -->
+            <!-- User space -->
+
+            <!-- eMMC Partition 1 -->
+            <!-- BP1 4MB -->
+            <!-- Boot Partition 1 -->
+
+            <!-- eMMC Partition 2 -->
+            <!-- BP2 4MB -->
+            <!-- Boot partition 2 -->
+
+            <!-- eMMC Partition 3 -->
+            <!-- RPMB 4MB -->
+            <!-- Secure data storage area -->
+
+            <!-- eMMC Partition 4 -->
+            <!-- GPP1 4MB -->
+            <!-- Platform factory data area -->
+			<gpp enabled="true">
+				<size unit="512KB">8</size>
+				<flags>
+					<value>0</value>
+				</flags>
+			</gpp>
+
+            <!-- eMMC Partition 5 -->
+            <!-- GPP2 16MB -->
+            <!-- Not used -->
+			<gpp enabled="false">
+				<size unit="512KB">32</size>
+				<flags>
+					<value>0</value>
+				</flags>
+			</gpp>
+
+            <!-- eMMC Partition 6 -->
+            <!-- GPP3 4MB -->
+            <!-- Not used -->
+			<gpp enabled="false">
+				<size unit="512KB">8</size>
+				<flags>
+					<value>0</value>
+				</flags>
+			</gpp>
+
+            <!-- eMMC Partition 7 -->
+            <!-- GPP4 4MB -->
+            <!-- Temporary RPMB storage until EOM triggered -->
+			<gpp enabled="true">
+				<size unit="512KB">8</size>
+				<flags>
+					<value>0</value>
+				</flags>
+			</gpp>
+		</partitions>
+	</device>
+</config>
+
