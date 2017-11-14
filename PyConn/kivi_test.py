@@ -1,7 +1,9 @@
 import kivy
 
 kivy.require('1.9.0')
-
+import os
+import time
+import random
 import threading
 import sys, time
 from socket import *
@@ -141,7 +143,7 @@ class MyConnector(App):
     def build(self):
 
         self.PORT = 5000
-        self.BUFSIZE = 4096
+        self.BUFSIZE = 10000
         self.root = Test()
         return self.root
 
@@ -210,7 +212,7 @@ class MyConnector(App):
             f = open(self.fileName,'rb')
             l = f.read(self.BUFSIZE)
             while(l):
-                s.send(l.encode("utf-8"))
+                s.send(l)
                 l = f.read(self.BUFSIZE)
         s.close()
     def file_ser(self):
@@ -219,15 +221,27 @@ class MyConnector(App):
         s.listen(5)
         print("listening...")
         conn, (host, remoteport) = s.accept()
-        fileName = conn.recv(self.BUFSIZE)
-        self.root.ids.rec_file_name.text = fileName.decode("utf-8")
-        conn.send(fileName.encode("utf-8"))
-        with open(fileName.decode("utf-8"),"wb") as f:
+        tempName = conn.recv(self.BUFSIZE)
+        print(tempName.decode("utf-8"))
+        #self.root.ids.rec_file_name.text = str(tempName.decode("utf-8"))
+        conn.send(tempName)
+        start_time = int(round(time.time()*1000))
+        print("start:" +str(start_time))
+        fileNameTemp = tempName.decode("utf-8")
+        print(fileNameTemp)
+        with open(fileNameTemp,"wb") as f:
             while True:
                 data = conn.recv(self.BUFSIZE)
                 if not data:
                     break
-                f.write(data.decode("utf-8"))
+                f.write(data)
+        finish_time = int(round(time.time()*1000))
+        print("finish:"+str(finish_time))
+        print('Transfer Finished')
+        print("Time: ",finish_time - start_time, "ms")
+        size = os.path.getsize(fileNameTemp)
+        print("File Size",size)
+        print("Rate", size / ((finish_time - start_time) / 1000) * 0.000008,"Mbps")
         f.close()
         conn.close()
 
