@@ -203,14 +203,14 @@ class MyConnector(App):
 
     def FileSend(self):
         s = socket(AF_INET, SOCK_STREAM)
-        s.connect((self.root.ids.host.text, self.PORT))
-        s.send(self.fileName.split('\\')[-1])
+        s.connect((self.root.ids.hostAddress.text, self.PORT))
+        s.send((self.fileName.split('\\')[-1]).encode("utf-8"))
         data = s.recv(self.BUFSIZE)
-        if(data == self.fileName.split('\\')[-1]):
+        if(data.decode("utf-8") == self.fileName.split('\\')[-1]):
             f = open(self.fileName,'rb')
             l = f.read(self.BUFSIZE)
             while(l):
-                s.send(l)
+                s.send(l.encode("utf-8"))
                 l = f.read(self.BUFSIZE)
         s.close()
     def file_ser(self):
@@ -220,14 +220,14 @@ class MyConnector(App):
         print("listening...")
         conn, (host, remoteport) = s.accept()
         fileName = conn.recv(self.BUFSIZE)
-        self.root.ids.rec_file_name.text = fileName
-        conn.send(fileName)
+        self.root.ids.rec_file_name.text = fileName.decode("utf-8")
+        conn.send(fileName.encode("utf-8"))
         with open(fileName.decode("utf-8"),"wb") as f:
             while True:
                 data = conn.recv(self.BUFSIZE)
                 if not data:
                     break
-                f.write(data)
+                f.write(data.decode("utf-8"))
         f.close()
         conn.close()
 
