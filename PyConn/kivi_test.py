@@ -200,6 +200,7 @@ class MyConnector(App):
 
 
     def fileName(self):
+        print(self.root.ids.fc.selection)
         self.root.ids.fileName.text = (self.root.ids.fc.selection[0]).split('\\')[-1]
         self.fileName = self.root.ids.fc.selection[0]
 
