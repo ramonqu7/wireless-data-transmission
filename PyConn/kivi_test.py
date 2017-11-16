@@ -242,7 +242,7 @@ class MyConnector(App):
         print("Time: ",finish_time - start_time, "ms")
         size = os.path.getsize(fileNameTemp)
         print("File Size",size)
-        print("Rate", size / ((finish_time - start_time) / 1000) * 0.000008,"Mbps")
+        print("Rate", size / ((finish_time - start_time) / 1000.0) * 0.000008,"Mbps")
         f.close()
         conn.close()
 
