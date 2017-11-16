@@ -152,7 +152,6 @@ while not done:
     
     #DEPTH
     dmap,d4d = get_depth()
-    
     # Overlay rgb over the depth stream
     rgbd  = mask_rgbd(d4d,rgb)
     
