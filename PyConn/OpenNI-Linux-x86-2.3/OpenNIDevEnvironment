@@ -1,0 +1,2 @@
+export OPENNI2_INCLUDE=/home/dingjun/workspace/openni2/Packaging/Final/OpenNI-Linux-x86-2.3/Include
+export OPENNI2_REDIST=/home/dingjun/workspace/openni2/Packaging/Final/OpenNI-Linux-x86-2.3/Redist
