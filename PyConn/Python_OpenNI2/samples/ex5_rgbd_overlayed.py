@@ -59,8 +59,8 @@ depth_stream = dev.create_depth_stream()
 
 ##configure the depth_stream
 #print 'Get b4 video mode', depth_stream.get_video_mode()
-depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=640, resolutionY=480, fps=30))
-
+depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=320, resolutionY=240, fps=30))
+rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888,resolutionX = 320,resolutionY = 240,fps = 30))
 
 ## Check and configure the mirroring -- default is True
 # print 'Mirroring info1', depth_stream.get_mirroring_enabled()
@@ -85,7 +85,7 @@ def get_rgb():
     """
     Returns numpy 3L ndarray to represent the rgb image.
     """
-    bgr   = np.fromstring(rgb_stream.read_frame().get_buffer_as_uint8(),dtype=np.uint8).reshape(480,640,3)
+    bgr   = np.fromstring(rgb_stream.read_frame().get_buffer_as_uint8(),dtype=np.uint8).reshape(240,320,3)
     rgb   = cv2.cvtColor(bgr,cv2.COLOR_BGR2RGB)
     return rgb    
 #get_rgb
@@ -107,7 +107,7 @@ def get_depth():
         .reshape(240,320) # Used to MATCH RGB Image (OMAP/ARM)
                 Requires .set_video_mode
     """
-    dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
+    dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(240,320)  # Works & It's FAST
     d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
     d4d = 255 - cv2.cvtColor(d4d,cv2.COLOR_GRAY2RGB)
     return dmap, d4d
@@ -157,12 +157,13 @@ while not done:
     
     # canvas
     canvas = np.hstack((d4d,rgb,rgbd))
-    
+    #canvas = np.hstack((rgbd))
     ## Distance map
     print('Center pixel is {} mm away'.format(dmap[119,159]))
 
     ## Display the stream
     cv2.imshow('depth || rgb || rgbd', canvas )
+    #cv2.imshow('rgbd', canvas)
 # end while
 
 ## Release resources 
