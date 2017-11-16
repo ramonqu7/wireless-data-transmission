@@ -49,7 +49,7 @@ Builder.load_string("""
                 height:300
                 id:data
             TextInput
-                id : log
+                id: log
                 size_hint:[0.2,None]
                 height:150
                 multiline:True
@@ -69,7 +69,7 @@ Builder.load_string("""
                 id:data_rec
                 multiline:True
             TextInput
-                id : log1
+                id: log1
                 multiline:True
                 size_hint:[0.2,None]
                 height:150
