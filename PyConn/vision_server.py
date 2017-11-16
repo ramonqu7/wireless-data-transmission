@@ -23,12 +23,20 @@ def ser():
     size = conn.recv(BUFSIZE)
     #receive one number (the size of the array
 
-
+    arr1 = ""
     while True:
             data = conn.recv(BUFSIZE)
             if not data:
                 break
             #parse the data and show the image
+            arr1+=data
+
+    canvas = np.hstack((rgbd))
+
+    ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
+
+    ## Display the stream
+    cv2.imshow('rgbd', canvas)
 
 
     conn.close()
@@ -37,10 +45,3 @@ def start_ser():
 
         thread = threading.Thread(target=ser)
         thread.start()
-
-canvas = np.hstack((rgbd))
-
-    ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
-
-    ## Display the stream
-cv2.imshow('rgbd', canvas)
