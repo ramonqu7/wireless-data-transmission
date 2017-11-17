@@ -143,7 +143,7 @@ class MyConnector(App):
     def build(self):
 
         self.PORT = 5000
-        self.BUFSIZE = 10000
+        self.BUFSIZE = 1048576
         self.root = Test()
         return self.root
 
@@ -205,18 +205,16 @@ class MyConnector(App):
         self.fileName = self.root.ids.fc.selection[0]
 
     def FileSend(self):
-        s = socket(AF_INET, TCP_NODELAY)
+        s = socket(AF_INET, SOCK_STREAM)
         s.connect((self.root.ids.hostAddress.text, self.PORT))
         s.send((self.fileName.split('\\')[-1]).encode("utf-8"))
         data = s.recv(self.BUFSIZE)
         if(data.decode("utf-8") == self.fileName.split('\\')[-1]):
             f = open(self.fileName,'rb')
-            #l = f.read(self.BUFSIZE)
-            l = f.readall()
-            s.sendall(l)
-            #while(l):
-                #s.send(l)
-                #l = f.read(self.BUFSIZE)
+            l = f.read(self.BUFSIZE)
+            while(l):
+                s.send(l)
+                l = f.read(self.BUFSIZE)
         s.close()
     def file_ser(self):
         s = socket(AF_INET, SOCK_STREAM)
@@ -234,7 +232,7 @@ class MyConnector(App):
         print(fileNameTemp)
         with open(fileNameTemp,"wb") as f:
             while True:
-                data = conn.recv()
+                data = conn.recv(self.BUFSIZE)
                 if not data:
                     break
                 f.write(data)
