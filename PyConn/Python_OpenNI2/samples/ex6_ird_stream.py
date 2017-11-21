@@ -21,10 +21,10 @@ from primesense._openni2 import OniSensorType
 
 
 ## Directory where OpenNI2.so is located
-dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
+dist ='/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
 
 ## Initialize openni and check
-openni2.initialize(dist)#'C:\Program Files\OpenNI2\Redist\OpenNI2.dll') # accepts the path of the OpenNI redistribution
+openni2.initialize(dist)
 if (openni2.is_initialized()):
     print ("openNI2 initialized")
 else:
