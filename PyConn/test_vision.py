@@ -7,7 +7,7 @@ from socket import *
 import pickle
 import numpy as np
 import cv2
-from primesense import openni2#, nite2
+from primesense import openni2  # , nite2
 from primesense import _openni2 as c_api
 import zlib
 
@@ -16,24 +16,24 @@ BUFSIZE = 10000
 hostAddr = "192.168.137.1"
 PORT = 5000
 
-
 ## Path of the OpenNI redistribution OpenNI2.so or OpenNI2.dll
 # Windows
-#dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
+# dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
 # OMAP
-#dist = '/home/carlos/Install/kinect/OpenNI2-Linux-ARM-2.2/Redist/'
+# dist = '/home/carlos/Install/kinect/OpenNI2-Linux-ARM-2.2/Redist/'
 # Linux
-dist ='/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
+dist = '/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
 
 openni2.initialize(dist)
 if (openni2.is_initialized()):
-    print ("openNI2 initialized")
+    print("openNI2 initialized")
 else:
-    print ("openNI2 not initialized")
+    print("openNI2 not initialized")
 
 ## Register the device
 dev = openni2.Device.open_any()
 ## create the streams stream
+
 #rgb_stream = dev.create_color_stream()
 depth_stream = dev.create_depth_stream()
 ##configure the depth_stream
@@ -51,6 +51,7 @@ depth_stream.start()
 #dev.set_depth_color_sync_enabled(True) # synchronize the streams
 ## IMPORTANT: ALIGN DEPTH2RGB (depth wrapped to match rgb stream)
 #dev.set_image_registration_mode(openni2.IMAGE_REGISTRATION_DEPTH_TO_COLOR)
+
 '''
 def get_rgb():
     """
@@ -60,6 +61,7 @@ def get_rgb():
     rgb   = cv2.cvtColor(bgr,cv2.COLOR_BGR2RGB)
     return rgb
 '''
+
 def get_depth():
     """
     Returns numpy ndarrays representing the raw and ranged depth images.
@@ -74,6 +76,7 @@ def get_depth():
         .reshape(240,320) # Used to MATCH RGB Image (OMAP/ARM)
                 Requires .set_video_mode
     """
+
     
     dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
     d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
@@ -89,8 +92,11 @@ def cli_send(arr1):
         #s.send(arr1.size)
         #send the combined version of the array (for rgbd)
 	s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
-        
 
+
+
+n = 0
+s = socket(AF_INET, SOCK_STREAM)
 
 
 s = 0
@@ -116,12 +122,13 @@ while not done:
 
     cli_send(d4d)
     s.close()
+
     cv2.imshow("depth",d4d)
 
 
-    ## Distance map
-   # print('Center pixel is {} mm away'.format(dmap[119, 159]))
 
+    ## Distance map
+    # print('Center pixel is {} mm away'.format(dmap[119, 159]))
 
 
 # end while
