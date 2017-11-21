@@ -35,11 +35,11 @@ from primesense import _openni2 as c_api
 
 ## Path of the OpenNI redistribution OpenNI2.so or OpenNI2.dll
 # Windows
-dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
+#dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
 # OMAP
 #dist = '/home/carlos/Install/kinect/OpenNI2-Linux-ARM-2.2/Redist/'
 # Linux
-#dist ='/home/carlos/Install/openni2/OpenNI-Linux-x64-2.2/Redist'
+dist ='/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
 
 ## Initialize openni and check
 openni2.initialize(dist) #
