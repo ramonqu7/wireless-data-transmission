@@ -18,11 +18,11 @@ PORT = 5000
 
 ## Path of the OpenNI redistribution OpenNI2.so or OpenNI2.dll
 # Windows
-dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
+#dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
 # OMAP
 #dist = '/home/carlos/Install/kinect/OpenNI2-Linux-ARM-2.2/Redist/'
 # Linux
-#dist ='/OpenNI-Linux-x86-2.3/Redist'
+dist ='/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
 
 openni2.initialize(dist)
 if (openni2.is_initialized()):
