@@ -29,13 +29,21 @@ class Server:
                 if not data:
                     break
                 arr1 += data
-            arr1 = np.fromstring(zlib.decompress(arr1), dtype=np.uint8).reshape(480, 640, 3)
+            arr1 = self.prepareData(arr1)
+                #np.fromstring(zlib.decompress(arr1), dtype=np.uint8).reshape(480, 640, 3)
 
             ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
             ## Display the stream
             thread = threading.Thread(target=self.showImage,args=(arr1))
             thread.start()
             conn.close()
+
+    def prepareData(self,data):
+        data = np.fromstring(data, dtype=np.uint8).reshape(480, 640, 3)
+        d4d = np.uint8(data.astype(float) *255/ 2**12-1)
+        d4d = 255 - cv2.cvtColor(d4d, cv2.COLOR_GRAY2RGB)
+        return d4d
+
 
     def showImage(self,image):
         cv2.imshow("Depth",image)

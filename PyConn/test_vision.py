@@ -81,8 +81,12 @@ def get_depth():
     dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
     d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
     d4d = 255 - cv2.cvtColor(d4d,cv2.COLOR_GRAY2RGB)
+<<<<<<< HEAD
     print("1    "+str(dmap.size))
     print("2    "+str(d4d.size))
+=======
+
+>>>>>>> 86decfd4286f78561b82cff4a9739838e7be66a5
     return dmap, d4d
 
 n = 0
@@ -94,11 +98,6 @@ def cli_send(arr1):
         #s.send(arr1.size)
         #send the combined version of the array (for rgbd)
 	s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
-
-
-
-n = 0
-s = socket(AF_INET, SOCK_STREAM)
 
 
 s = 0
