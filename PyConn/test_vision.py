@@ -95,7 +95,6 @@ def cli_send(arr1):
 	s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
 
 
-s = 0
 done = False
 while not done:
     s = socket(AF_INET, SOCK_STREAM)
@@ -116,8 +115,8 @@ while not done:
     # DEPTH
     dmap, d4d = get_depth()
 
-    #cli_send(d4d)
-    #s.close()
+    cli_send(dmap)
+    s.close()
 
     cv2.imshow("depth",d4d)
 
