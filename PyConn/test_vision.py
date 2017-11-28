@@ -135,7 +135,6 @@ while not done:
 
 ## Release resources
 cv2.destroyAllWindows()
-rgb_stream.stop()
 depth_stream.stop()
 openni2.unload()
 print("Terminated")
