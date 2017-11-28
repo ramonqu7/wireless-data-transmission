@@ -81,8 +81,8 @@ def get_depth():
     dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
     d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
     d4d = 255 - cv2.cvtColor(d4d,cv2.COLOR_GRAY2RGB)
-    print("1    "+dmap.size())
-    print("2    "+d4d.size())
+    print("1    "+str(dmap.size))
+    print("2    "+str(d4d.size))
     return dmap, d4d
 
 n = 0
@@ -104,8 +104,8 @@ s = socket(AF_INET, SOCK_STREAM)
 s = 0
 done = False
 while not done:
-    s = socket(AF_INET, SOCK_STREAM)
-    s.connect((hostAddr, PORT))
+    #s = socket(AF_INET, SOCK_STREAM)
+    #s.connect((hostAddr, PORT))
     key = cv2.waitKey(1) & 255
     ## Read keystrokes
     if key == 27:  # terminate
