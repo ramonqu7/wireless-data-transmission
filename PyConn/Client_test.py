@@ -14,6 +14,7 @@ class Client:
         self.hostAddr = "192.168.137.1"
         self.PORT = 5000
         self.dist = '/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
+        self.device = openni2.Device.open_any()
 
     def setAddr(self,addr):
         self.hostAddr = addr
@@ -27,6 +28,26 @@ class Client:
             print("openNI2 initialized")
         else:
             print("openNI2 not initialized")
+
+    def initDepth(self,x,y,fps):
+        self.depth_stream = self.device.create_depth_stream()
+        self.depth_stream.set_video_mode(
+            c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=x,
+                               resolutionY=y, fps=fps))
+        self.depth_stream.set_mirroring_enabled(True)
+        self.depth_stream.start()
+
+    def initColor(self,x,y,fps):
+        self.rgb_stream = self.device.create_color_stream()
+        self.rgb_stream.set_video_mode(
+            c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX=x,
+                               resolutionY=y, fps=fps))
+        self.rgb_stream.start()
+
+
+
+
+
 
 
 
