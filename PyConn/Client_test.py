@@ -42,6 +42,8 @@ class Client:
         self.rgb_stream.set_video_mode(
             c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX=x,
                                resolutionY=y, fps=fps))
+        self.rgb_stream.start()
+
 
 
 
