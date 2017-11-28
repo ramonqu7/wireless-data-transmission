@@ -21,8 +21,13 @@ class Server:
         self.s.bind(('', self.PORT))
         self.s.listen(5)
         print("listening...")
-        lasttime = time.time()
+        lasttime =  int(round(time.time() * 1000))
+        count = 0
         while True:
+            if(int(round(time.time() * 1000)) - lasttime > 5000):
+                lasttime = int(round(time.time() * 1000))
+                print("Average FPS:"+str(count / 5.0))
+                count = 0
 
             conn, (host, remoteport) = self.s.accept()
             arr1 = b""
@@ -38,6 +43,7 @@ class Server:
             ## Display the stream
             cv2.waitKey(1) & 255
             cv2.imshow("Depth", arr1)
+            count+=1
 
 
 
@@ -48,6 +54,7 @@ class Server:
         data = np.fromstring(zlib.decompress(data), dtype=np.uint16).reshape(480, 640)
         d4d = np.uint8(data.astype(float) *255/ 2**12-1)
         d4d = 255 - cv2.cvtColor(d4d, cv2.COLOR_GRAY2RGB)
+        #d4d = np.fromstring(zlib.decompress(data),dtype=np.uint8).reshape(480,640,3)
         return d4d
 
 
