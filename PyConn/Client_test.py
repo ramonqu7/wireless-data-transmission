@@ -14,7 +14,7 @@ class Client:
         self.hostAddr = "192.168.137.1"
         self.PORT = 5000
         self.dist = '/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
-        self.device = openni2.Device.open_any()
+        
         self.s = socket(AF_INET,SOCK_STREAM) #SOCK_STREAM -> TCP connection
     #Server Address Setter
     def setAddr(self,addr):
@@ -29,6 +29,8 @@ class Client:
             print("openNI2 initialized")
         else:
             print("openNI2 not initialized")
+        self.device = openni2.Device.open_any()
+        print("Device opened")
     #setting for depth camera
     def initDepth(self,x,y,fps):
         self.depth_stream = self.device.create_depth_stream()
@@ -37,6 +39,7 @@ class Client:
                                resolutionY=y, fps=fps))
         self.depth_stream.set_mirroring_enabled(True)
         self.depth_stream.start()
+        print("Depth Camera Initialized")
     #settings for color camera
     def initColor(self,x,y,fps):
         self.rgb_stream = self.device.create_color_stream()
@@ -50,9 +53,10 @@ class Client:
                                   dtype=np.uint16).reshape(y,x)
     #the base to send the data to the server
     def send(self,data):
-
+        self.s = socket(AF_INET,SOCK_STREAM)
+        self.s.connect((self.hostAddr, self.PORT))
         self.s.sendto(data,(self.hostAddr,self.PORT))
-
+        self.s.close()
     #the prepare the data(in the future compress or define own packet type
     def prepareData(self,rawData):
         return rawData.tostring()
@@ -68,26 +72,20 @@ class Client:
         self.initDepth(640,480,30)
 
         done = False
-        self.s.connect((self.hostAddr, self.PORT))
+        
+        print("Server is online")
         while not done:
-            key = cv2.waitKey(1) & 255
-            ## Read keystrokes
-            if key == 27:  # terminate
-                print("\tESC key detected!")
-                done = True
-            '''elif chr(key) == 's':  # screen capture
-                print("\ts key detected. Saving image and distance map {}".format(s))
-                np.savetxt("ex5dmap_" + str(s) + '.out', dmap)
-                # s+=1 # uncomment for multiple captures '''
             self.getDepth(640,480)
             self.send(self.prepareData(self.data))
+           
+            
 
-            self.show()
-            cv2.imshow("depth", self.d4d)
+            #self.show()
+            #cv2.imshow("depth", self.d4d)
 
             ## Distance map
             # print('Center pixel is {} mm away'.format(dmap[119, 159]))
-        cv2.destroyAllWindows()
+       # cv2.destroyAllWindows()
         self.depth_stream.stop()
         openni2.unload()
         self.s.close()
