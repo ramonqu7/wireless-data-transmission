@@ -21,7 +21,9 @@ class Server:
         self.s.bind(('', self.PORT))
         self.s.listen(5)
         print("listening...")
+        lasttime = time.time()
         while True:
+
             conn, (host, remoteport) = self.s.accept()
             arr1 = b""
             while True:
@@ -34,20 +36,23 @@ class Server:
 
             ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
             ## Display the stream
-            thread = threading.Thread(target=self.showImage,args=(arr1))
-            thread.start()
+            cv2.waitKey(1) & 255
+            cv2.imshow("Depth", arr1)
+
+
+
             conn.close()
 
+
     def prepareData(self,data):
-        data = np.fromstring(data, dtype=np.uint8).reshape(480, 640, 3)
+        data = np.fromstring(zlib.decompress(data), dtype=np.uint16).reshape(480, 640)
         d4d = np.uint8(data.astype(float) *255/ 2**12-1)
         d4d = 255 - cv2.cvtColor(d4d, cv2.COLOR_GRAY2RGB)
         return d4d
 
 
-    def showImage(self,image):
-        cv2.imshow("Depth",image)
-        cv2.waitKey(0)
+    #def showImage(self,image):
+
 
     def run(self):
         thread = threading.Thread(target=self.serverBegin)
