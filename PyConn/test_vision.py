@@ -12,7 +12,7 @@ from primesense import _openni2 as c_api
 import zlib
 
 ser_run = True
-BUFSIZE = 10000
+BUFSIZE = 8192
 hostAddr = "192.168.137.1"
 PORT = 5000
 
@@ -102,7 +102,9 @@ def cli_send1(arr1):
     # s.send(arr1.size)
     # send the combined version of the array (for rgbd)
     t = str(int(round(time.time()*1000)))[-4:]
-    s.sendto(zlib.compress(t+arr1.tostring()), (hostAddr, PORT))
+    data =t+arr1.tostring()
+    #data = zlib.compress(data)
+    s.sendto(data, (hostAddr, PORT))
 '''
 done = False
 while not done:
@@ -138,16 +140,11 @@ while not done:
 # end while
 '''
 while True:
-    f = open("log.txt","wb")
     s = socket(AF_INET, SOCK_STREAM)
     s.connect((hostAddr, PORT))
     dmap, d4d = get_depth()
-    f.write(b"///////DMAP//////////")
-    f.write(dmap)
-    f.write(b"///////D4D///////////")
-    f.write(d4d)
 
-    cli_send(dmap)
+    cli_send1(dmap)
     s.close()
 
 ## Release resources
