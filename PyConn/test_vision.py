@@ -87,14 +87,23 @@ def get_depth():
 n = 0
 s = socket(AF_INET, SOCK_STREAM)
 def cli_send(arr1):
-	global s
+    global s
         
-        #send the size of the array
-        #s.send(arr1.size)
-        #send the combined version of the array (for rgbd)
-	s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
+    #send the size of the array
+    #s.send(arr1.size)
+    #send the combined version of the array (for rgbd)
+    s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
 
 
+def cli_send1(arr1):
+    global s
+
+    # send the size of the array
+    # s.send(arr1.size)
+    # send the combined version of the array (for rgbd)
+    t = str(int(round(time.time()*1000)))[-4:]
+    s.sendto(zlib.compress(t+arr1.tostring()), (hostAddr, PORT))
+'''
 done = False
 while not done:
     s = socket(AF_INET, SOCK_STREAM)
@@ -127,9 +136,21 @@ while not done:
 
 
 # end while
+'''
+while True:
+    f = open("log.txt","wb")
+    s = socket(AF_INET, SOCK_STREAM)
+    s.connect((hostAddr, PORT))
+    dmap, d4d = get_depth()
+    f.write(b"///////DMAP//////////")
+    f.write(dmap)
+    f.write(b"///////D4D///////////")
+    f.write(d4d)
+
+    cli_send(dmap)
+    s.close()
 
 ## Release resources
-cv2.destroyAllWindows()
 depth_stream.stop()
 openni2.unload()
 print("Terminated")
