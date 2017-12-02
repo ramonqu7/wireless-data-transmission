@@ -67,10 +67,52 @@ class Server:
             count+=1
             conn.close()
 
+    def serverBegin1(self):
+        self.s.bind(('', self.PORT))
+        self.s.listen(1)
+        print("listening...")
+        lasttime = int(round(time.time() * 1000))
+        count = 0
+        while True:
 
 
+            conn, (host, remoteport) = self.s.accept()
+            arr1 = b""
+            while True:
+                if (int(round(time.time() * 1000)) - lasttime > 5000):
+                    lasttime = int(round(time.time() * 1000))
+                    print("Average FPS:" + str(count / 5.0))
+                    count = 0
+                while True:
+                    try:
+                        data = conn.recv(1024)
+                        test = int(data.decode("utf-8"))
+                        break
+                    except:
+                        pass
+                conn.send(data)
+                #print(data)
+                arr1 = conn.recv(int(data.decode("utf-8")))
+                arr1 = self.prepareData(arr1)
+                #thread = threading.Thread(target=self.show, kwargs={'img': arr1})
+                #thread.start()
+                cv2.imshow("Depth",arr1)
+                cv2.waitKey(1) &255
+                count += 1
+                # np.fromstring(zlib.decompress(arr1), dtype=np.uint8).reshape(480, 640, 3)
 
+            ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
+            ## Display the stream
 
+            conn.close()
+
+    def show(self, img):
+        try:
+            cv2.destroyAllWindows()
+        except:
+            pass
+        cv2.imshow("Depth", img)
+        cv2.waitKey(1) & 255
 
     def prepareData(self,data):
         data = zlib.decompress(data)
@@ -81,7 +123,7 @@ class Server:
         return d4d
 
     def prepareData2(self,data): #For parsing the time
-        #data = zlib.decompress(data)
+        data = zlib.decompress(data)
         tt = round(time.time()*1000)
         timestamp =abs(int(tt)%10000 - int(data[0:4]))
         #print(int(tt)%10000,int(data[0:4]),timestamp)
@@ -92,7 +134,7 @@ class Server:
         return d4d,timestamp
 
     def run(self):
-        thread = threading.Thread(target=self.serverBegin2)
+        thread = threading.Thread(target=self.serverBegin1)
         thread.start()
 
 if __name__ == '__main__':
@@ -101,39 +143,4 @@ if __name__ == '__main__':
 
 
     '''
-    def serverBegin1(self):
-        self.s.bind(('', self.PORT))
-        self.s.listen(1)
-        print("listening...")
-        lasttime =  int(round(time.time() * 1000))
-        count = 0
-        while True:
-            if(int(round(time.time() * 1000)) - lasttime > 5000):
-                lasttime = int(round(time.time() * 1000))
-                print("Average FPS:"+str(count / 5.0))
-
-                count = 0
-
-            conn, (host, remoteport) = self.s.accept()
-            arr1 = b""
-            while True:
-                data = conn.recv(4)
-                conn.send(data)
-                arr1 = conn.recv(int(data))
-                arr1 = self.prepareData(arr1)
-                thread = threading.Thread(target=show,kwargs={'img':arr1})
-                thread.start()
-                #np.fromstring(zlib.decompress(arr1), dtype=np.uint8).reshape(480, 640, 3)
-
-            ## Distance map print('Center pixel is {} mm away'.format(dmap[119, 159]))
-            ## Display the stream
-            count+=1
-            conn.close()
-        
-    def show(self,img):
-        try:
-            cv2.destroyAllWindows()
-        except:
-            pass
-        cv2.imshow("Depth",img)
-        cv2.waitKey(1)&255'''
+    '''
