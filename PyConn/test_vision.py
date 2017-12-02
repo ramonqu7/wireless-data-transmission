@@ -97,14 +97,24 @@ def cli_send(arr1):
 
 def cli_send1(arr1):
     global s
-
+    
     # send the size of the array
     # s.send(arr1.size)
     # send the combined version of the array (for rgbd)
     t = str(int(round(time.time()*1000)))[-4:]
     data =t+arr1.tostring()
-    #data = zlib.compress(data)
+    data = zlib.compress(data)
+    
     s.sendto(data, (hostAddr, PORT))
+
+def cli_send2(arr1):
+    global s
+    # send the size of the array
+    data =arr1.tostring()
+    data = zlib.compress(data)
+    s.send(str(len(data)).encode("utf-8"))
+    s.recv(1024)
+    s.send(data)
 '''
 done = False
 while not done:
@@ -142,9 +152,10 @@ while not done:
 while True:
     s = socket(AF_INET, SOCK_STREAM)
     s.connect((hostAddr, PORT))
-    dmap, d4d = get_depth()
+    while True:
+    	dmap, d4d = get_depth()
 
-    cli_send1(dmap)
+    	cli_send2(dmap)
     s.close()
 
 ## Release resources
