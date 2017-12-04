@@ -134,7 +134,7 @@ class Server:
         return d4d,timestamp
 
     def run(self):
-        thread = threading.Thread(target=self.serverBegin1)
+        thread = threading.Thread(target=self.serverBegin)
         thread.start()
 
 if __name__ == '__main__':
