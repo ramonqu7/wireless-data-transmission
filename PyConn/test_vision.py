@@ -10,6 +10,7 @@ import cv2
 from primesense import openni2  # , nite2
 from primesense import _openni2 as c_api
 import zlib
+import bz2
 
 ser_run = True
 BUFSIZE = 8192
@@ -85,7 +86,7 @@ def get_depth():
     return dmap, d4d
 
 n = 0
-s = socket(AF_INET, SOCK_STREAM)
+s = socket(AF_INET, TCP_NODELAY)
 def cli_send(arr1):
     global s
         
@@ -93,8 +94,8 @@ def cli_send(arr1):
     #s.send(arr1.size)
     #send the combined version of the array (for rgbd)
     s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
-    with open("testSend.txt","ab") as f:
-    	f.write(zlib.compress(arr1.tostring()))
+    #with open("testSend.txt","ab") as f:
+    	#f.write(zlib.compress(arr1.tostring()))
 
 
 def cli_send1(arr1):
@@ -113,9 +114,9 @@ def cli_send2(arr1):
     global s
     # send the size of the array
     data =arr1.tostring()
-    data = zlib.compress(data)
-    s.send(str(len(data)).encode("utf-8"))
-    s.recv(1024)
+    data = zlib.compress(data) + b"END"
+    
+
     s.send(data)
 '''
 done = False
