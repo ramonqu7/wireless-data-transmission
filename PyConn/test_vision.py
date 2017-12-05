@@ -93,6 +93,9 @@ def cli_send(arr1):
     #s.send(arr1.size)
     #send the combined version of the array (for rgbd)
     s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
+    f = open("TestSent.txt","w")
+    f.write(arr1.tostring())
+    f.close()
 
 
 def cli_send1(arr1):
