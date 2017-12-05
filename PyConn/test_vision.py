@@ -152,10 +152,12 @@ while not done:
 while True:
     s = socket(AF_INET, SOCK_STREAM)
     s.connect((hostAddr, PORT))
-    while True:
-    	dmap, d4d = get_depth()
+    #while True:
+    dmap, d4d = get_depth()
+	#cv2.imshow("dd",d4d)
+	#cv2.waitKey(1)&255
 
-    	cli_send2(dmap)
+    cli_send(dmap)
     s.close()
 
 ## Release resources
