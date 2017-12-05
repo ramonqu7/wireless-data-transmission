@@ -1,10 +1,10 @@
 import threading
-import sys, time
-from socket import *
-import pickle
-import numpy as np
-import cv2
+import time
 import zlib
+from socket import *
+
+import cv2
+import numpy as np
 
 '''
 Single Port Server Test Version
@@ -28,25 +28,27 @@ class Server:
         lasttime = int(round(time.time() * 1000))
         count = 0
         while True:
-            f = open("TestReceive.txt", "w")
-            if (int(round(time.time() * 1000)) - lasttime > 5000):
-                lasttime = int(round(time.time() * 1000))
-                print("Average FPS:" + str(count / 5.0))
-                count = 0
-            conn, (host, remoteport) = self.s.accept()
-            arr1 = b""
-            while True:
-                data = conn.recv(self.BUFSIZE)
-                if not data:
-                    break
-                arr1 += data
-            arr1 = self.prepareData(arr1)
-            f.write(arr1)
-            cv2.waitKey(1) & 255
-            cv2.imshow("Depth", arr1)
-            count += 1
-            conn.close()
-            f.close()
+            with open("testReceive.txt", "ab") as f:
+
+                if (int(round(time.time() * 1000)) - lasttime > 5000):
+                    lasttime = int(round(time.time() * 1000))
+                    print("Average FPS:" + str(count / 5.0))
+                    count = 0
+                conn, (host, remoteport) = self.s.accept()
+                arr1 = b""
+                while True:
+                    data = conn.recv(self.BUFSIZE)
+                    if not data:
+                        break
+                    arr1 += data
+                f.write(arr1)
+                arr1 = self.prepareData(arr1)
+
+
+                cv2.waitKey(1) & 255
+                cv2.imshow("Depth", arr1)
+                count += 1
+                conn.close()
 
     # Added Time delay check in the front of the data Packet
     def serverBegin2(self):
