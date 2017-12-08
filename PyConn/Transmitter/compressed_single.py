@@ -18,7 +18,7 @@ hostAddr = "192.168.137.1"
 PORT = 5000
 
 # Windows
-#dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
+# dist = 'C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin'
 # Linux
 dist = '/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
 
@@ -32,23 +32,25 @@ else:
 dev = openni2.Device.open_any()
 ## create the streams stream
 
-#rgb_stream = dev.create_color_stream()
+# rgb_stream = dev.create_color_stream()
 depth_stream = dev.create_depth_stream()
 ##configure the depth_stream
-#print 'Get b4 video mode', depth_stream.get_video_mode()
-depth_stream.set_video_mode(c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=640, resolutionY=480, fps=30))
-#rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = #c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888,resolutionX = 320,resolutionY = 240,fps = 30))
+# print 'Get b4 video mode', depth_stream.get_video_mode()
+depth_stream.set_video_mode(
+    c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=640, resolutionY=480,
+                       fps=30))
+# rgb_stream.set_video_mode(c_api.OniVideoMode(pixelFormat = #c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888,resolutionX = 320,resolutionY = 240,fps = 30))
 ## Check and configure the mirroring -- default is True
 # print 'Mirroring info1', depth_stream.get_mirroring_enabled()
 depth_stream.set_mirroring_enabled(True)
-#rgb_stream.set_mirroring_enabled(False)
+# rgb_stream.set_mirroring_enabled(False)
 ## start the stream
-#rgb_stream.start()
+# rgb_stream.start()
 depth_stream.start()
 ## synchronize the streams
-#dev.set_depth_color_sync_enabled(True) # synchronize the streams
+# dev.set_depth_color_sync_enabled(True) # synchronize the streams
 ## IMPORTANT: ALIGN DEPTH2RGB (depth wrapped to match rgb stream)
-#dev.set_image_registration_mode(openni2.IMAGE_REGISTRATION_DEPTH_TO_COLOR)
+# dev.set_image_registration_mode(openni2.IMAGE_REGISTRATION_DEPTH_TO_COLOR)
 
 '''
 def get_rgb():
@@ -60,6 +62,7 @@ def get_rgb():
     return rgb
 '''
 
+
 def get_depth():
     """
     Returns numpy ndarrays representing the raw and ranged depth images.
@@ -69,45 +72,53 @@ def get_depth():
     Note1: 
         fromstring is faster than asarray or frombuffer
     """
-    dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
-    d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
-    d4d = 255 - cv2.cvtColor(d4d,cv2.COLOR_GRAY2RGB)
+    dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(), dtype=np.uint16).reshape(480,
+                                                                                                    640)  # Works & It's FAST
+    d4d = np.uint8(dmap.astype(float) * 255 / 2 ** 12 - 1)  # Correct the range. Depth images are 12bits
+    d4d = 255 - cv2.cvtColor(d4d, cv2.COLOR_GRAY2RGB)
 
     return dmap, d4d
 
+
 n = 0
 s = socket(AF_INET, TCP_NODELAY)
+
+
 def cli_send(arr1):
     global s
-        
-    #send the size of the array
-    #s.send(arr1.size)
-    #send the combined version of the array (for rgbd)
-    s.sendto(zlib.compress(arr1.tostring()),(hostAddr, PORT))
-    #with open("testSend.txt","ab") as f:
-    	#f.write(zlib.compress(arr1.tostring()))
+
+    # send the size of the array
+    # s.send(arr1.size)
+    # send the combined version of the array (for rgbd)
+    s.sendto(zlib.compress(arr1.tostring()), (hostAddr, PORT))
+    # with open("testSend.txt","ab") as f:
+
+
+# f.write(zlib.compress(arr1.tostring()))
 
 
 def cli_send1(arr1):
     global s
-    
+
     # send the size of the array
     # s.send(arr1.size)
     # send the combined version of the array (for rgbd)
-    t = str(int(round(time.time()*1000)))[-4:]
-    data =t+arr1.tostring()
+    t = str(int(round(time.time() * 1000)))[-4:]
+    data = t + arr1.tostring()
     data = zlib.compress(data)
-    
+
     s.sendto(data, (hostAddr, PORT))
+
 
 def cli_send2(arr1):
     global s
     # send the size of the array
-    data =arr1.tostring()
+    data = arr1.tostring()
     data = zlib.compress(data) + b"END"
-    
 
     s.send(data)
+
+
 '''
 done = False
 while not done:
@@ -145,10 +156,10 @@ while not done:
 while True:
     s = socket(AF_INET, SOCK_STREAM)
     s.connect((hostAddr, PORT))
-    #while True:
+    # while True:
     dmap, d4d = get_depth()
-	#cv2.imshow("dd",d4d)
-	#cv2.waitKey(1)&255
+    # cv2.imshow("dd",d4d)
+    # cv2.waitKey(1)&255
 
     cli_send(dmap)
     s.close()
