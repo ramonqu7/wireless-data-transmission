@@ -7,7 +7,7 @@ from primesense._openni2 import OniSensorType
 
 
 n = True
-openni2.initialize("C:\Program Files\OpenNI-Windows-x86-2.3\Samples\Bin")
+openni2.initialize('/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/')
 dev = openni2.Device.open_any()
 depth_stream = dev.create_depth_stream()
 #depth_stream = dev.create_color_stream()
