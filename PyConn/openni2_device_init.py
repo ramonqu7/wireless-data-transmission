@@ -59,12 +59,17 @@ class VisionSensor:
 
     ##Need to check whether it may work
     def getRgbd(self):
+        #4L ndarray , rgb and depth array
         rgb = self.getRgb()
         depth = self.getDepth()
         self.rgbd = []
         for i in range(len(rgb)):
             rgb[i].append(depth[i])
             self.rgbd.append(rgb[i])
+        return self.rgbd
+
+
+
 
 
 
