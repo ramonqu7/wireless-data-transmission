@@ -69,6 +69,7 @@ def get_depth():
     Note1: 
         fromstring is faster than asarray or frombuffer
     """
+
     dmap = np.fromstring(depth_stream.read_frame().get_buffer_as_uint16(),dtype=np.uint16).reshape(480,640)  # Works & It's FAST
     d4d = np.uint8(dmap.astype(float) *255/ 2**12-1) # Correct the range. Depth images are 12bits
     d4d = 255 - cv2.cvtColor(d4d,cv2.COLOR_GRAY2RGB)

@@ -6,7 +6,7 @@ import time
 import zlib
 import rospy
 
-class RgbdPublisher():
+class RgbdPublisher:
     def __init__(self):
         self.device = VisionSensor()
         self.device.createDepth() # default 640*480*30fps
