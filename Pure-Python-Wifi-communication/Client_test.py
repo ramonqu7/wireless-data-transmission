@@ -8,6 +8,7 @@ from primesense import openni2#, nite2
 from primesense import _openni2 as c_api
 
 # Python code run on Joule board, as a publisher
+# Does not use the ROS, pure python wifi library
 class Client:
     def __init__(self):
         self.BUFSIZE = 10000

@@ -1,5 +1,9 @@
 import kivy
 
+
+#Python GUI for wifi communication test
+# Tested the total bandwidth of the connection in your network
+
 kivy.require('1.9.0')
 import os
 import time
@@ -26,9 +30,9 @@ Builder.load_string("""
     size_hint: .9, .9
     pos_hint: {'center_x': .5, 'center_y': .5}
     do_default_tab: False
-    
+
     canvas:
-        Color: 
+        Color:
             rgb: [0,0,0]
         Rectangle:
             size: self.size
@@ -38,11 +42,11 @@ Builder.load_string("""
         GridLayout:
             cols:2
             TextInput:
-                id:host 
+                id:host
                 size_hint:[0.6,None]
                 height:40
                 hint_text:"<-- Host Address"
-            
+
             TextInput:
                 hint_text:'Message (Leave Empty to send test "x"s)'
                 size_hint:[1,None]
@@ -54,7 +58,7 @@ Builder.load_string("""
                 height:150
                 multiline:True
             Button:
-                text:"Send Message"  
+                text:"Send Message"
                 size_hint:[0.2,None]
                 height:150
                 on_press:app.send()
@@ -90,7 +94,7 @@ Builder.load_string("""
                 path:"E:/personal_robotics/wireless_data_transmission/PyConn/testFile"
                 id: fc
                 FileChooserIconLayout
-                
+
             BoxLayout:
                 orientation:'vertical'
                 BoxLayout:
@@ -99,18 +103,18 @@ Builder.load_string("""
                     Label:
                         color:[0,0,0,1]
                         canvas.before:
-                            Color: 
+                            Color:
                                 rgb:.6,.6,.6
                             Rectangle:
                                 pos:self.pos
                                 size:self.size
                         id:fileName
-                    
+
                     Button:
                         text: 'Choose File'
                         on_press: app.fileName()
                 BoxLayout:
-                    size_hint_y: None   
+                    size_hint_y: None
                     TextInput:
                         hint_text:"Host Address"
                         id: hostAddress
@@ -128,8 +132,8 @@ Builder.load_string("""
         Button:
             text: "Start Server"
             on_press: app.ser_file_start()
-                
-            
+
+
 
 """)
 
