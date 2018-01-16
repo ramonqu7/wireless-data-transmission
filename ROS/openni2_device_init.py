@@ -45,8 +45,8 @@ class VisionSensor:
 
     def getDepth(self, x = 640, y = 480):
         """dmap:= distancemap in mm, 1L ndarray, dtype=uint16, min=0, max=2**12-1
-             #d4d := depth for dislay, 3L ndarray, dtype=uint8, min=0, max=255    
-            Note1: 
+             #d4d := depth for dislay, 3L ndarray, dtype=uint8, min=0, max=255
+            Note1:
                 fromstring is faster than asarray or frombuffer
             """
         self.dmap = np.fromstring(self.depth_stream.read_frame().get_buffer_as_uint16(), dtype=np.uint16).reshape(y, x)
@@ -54,7 +54,7 @@ class VisionSensor:
 
     def converDepth2Gray(self):
         self.d4d = np.uint8(self.dmap.astype(float) * 255 / 2 ** 12 - 1)  # Correct the range. Depth images are 12bits
-        self.d4d = 255 - cv2.cvtColor(self.d4d, cv2.COLOR_GRAY2RGB)
+        #self.d4d = 255 - cv2.cvtColor(self.d4d, cv2.COLOR_GRAY2RGB)
         return self.d4d
 
     ##Need to check whether it may work
@@ -67,16 +67,3 @@ class VisionSensor:
             rgb[i].append(depth[i])
             self.rgbd.append(rgb[i])
         return self.rgbd
-
-
-
-
-
-
-
-
-
-
-
-
-
