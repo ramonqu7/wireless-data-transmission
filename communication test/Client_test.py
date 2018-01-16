@@ -7,14 +7,14 @@ import cv2
 from primesense import openni2#, nite2
 from primesense import _openni2 as c_api
 
-
+# Python code run on Joule board, as a publisher
 class Client:
     def __init__(self):
         self.BUFSIZE = 10000
         self.hostAddr = "192.168.137.1"
         self.PORT = 5000
         self.dist = '/home/test/Desktop/OpenNI-Linux-x64-2.2/Redist/'
-        
+
         self.s = socket(AF_INET,SOCK_STREAM) #SOCK_STREAM -> TCP connection
     #Server Address Setter
     def setAddr(self,addr):
@@ -72,13 +72,13 @@ class Client:
         self.initDepth(640,480,30)
 
         done = False
-        
+
         print("Server is online")
         while not done:
             self.getDepth(640,480)
             self.send(self.prepareData(self.data))
-           
-            
+
+
 
             #self.show()
             #cv2.imshow("depth", self.d4d)
@@ -94,16 +94,3 @@ class Client:
 if __name__ == '__main__':
     c = Client()
     c.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
