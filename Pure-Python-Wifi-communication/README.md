@@ -54,3 +54,34 @@ The code is kivi_test.py, which is a function programmed with kivy GUI python fu
   - 3) Download Openni2 library
     - In this project, I attached the openni2 driver folder in certain folders.
     - But here is the [link](https://structure.io/openni)
+
+## Benchmark Test result
+- Networking (Bandwidth)
+  - The average result is around 100  - 130 Mbps
+  - Two device in the same network:
+    - Average **15.2875 Mbps** (between to laptop not between laptop to Joule)
+  - Two device in wifi direct connecting mode (Laptop to Joule)
+    - Average **82.4565 Mbps**
+- StructureIO Depth Data without ROS (only Wifi)
+    (all receiver measurements unless otherwise noted)
+  - 5s time period average
+    - w/o compression
+      - Fps: 5 - 8 fps
+      - Latency: 63ms - 400 ms, average 153ms
+    - w/ compression
+      - Zlib easy compression w/ packet type regular TCP
+        - Fps: 18.8 - 20 fps
+        - Latency: 127ms - 438ms, average 255ms
+      - Zlib easy compression w/ packet type TCP_NODELAY
+        - Fps: 19.1 fps
+      - Bz2 compression
+        - Fps: 9.5 fps
+  - 60s time period average
+    - w/o compression
+      - Fps: 5.08fps
+      - Latency: 191.11ms
+    - w/ compression (Zlib easy compression)
+      - Fps: 15.2fps
+      - Latency: 348.35ms
+    - Signal Degradation:
+      - Using lossless compression and TCP connection, the file sent and received are identical.
