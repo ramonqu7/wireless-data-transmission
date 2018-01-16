@@ -38,6 +38,7 @@ The code is kivi_test.py, which is a function programmed with kivy GUI python fu
   - Send the vision data. Client read it and send the array. The other side receive the array and show the images. (not sure about the time delay and so on)
   ### Openni2 and OpenCV
   [Detail is on this website](https://github.com/PrimeSense/Sensor)
+  For Openni2, please check the Python_Openni2 folder Readme.md
   Linux:
 	Requirements:
   - 1) GCC 4.x
