@@ -2,11 +2,12 @@
 import cv2
 import numpy as np
 import time
+import zlib
 from flask import Flask, render_template, Response
 
 class VideoCamera(object):
-    def __init__(self,type):
-        self.name = "../pic/"+type+"_"
+    def __init__(self):
+        self.name = "../pic/"
         self.count = 0
     def __del__(self):
         self.count = 0
@@ -14,10 +15,16 @@ class VideoCamera(object):
         self.count+=1
         if(self.count > 400):
             self.count = 1
-        self.filename = self.name+str(self.count)+".png"
+        self.filename = self.name+"rgb_"+str(self.count)+".png"
         color = cv2.imread(self.filename)
-        ret, jpeg = cv2.imencode('.jpg', color)
-        return jpeg.tobytes()#fpath.getvalue()
+        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 75]
+        ret, jpeg = cv2.imencode('.jpg', color,encode_param)
+        
+        self.filename = self.name+"depth_"+str(self.count)+".png"
+        depth = zlib.compress(cv2.imread(self.filename))
+        
+
+        return jpeg.tobytes(), depth
 
 
 
@@ -29,19 +36,16 @@ def index():
 
 def gen(camera):
     while True:
-        frame = camera.get_frame()
+        rgb,depth = camera.get_frame()
 
-        yield (b'--frame'+str.encode(str(len(frame)))+b'e\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-@app.route('/rgb_feed')
+        yield (b'--frame'+str.encode(str(len(rgb)))+b'f'+str.encode(str(len(depth)))+b'e\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' +rgb+depth + b'\r\n\r\n')
+
+@app.route('/video_feed')
 def rgb_feed():
-    return Response(gen(VideoCamera('rgb')),
+    return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/depth_feed')
-def depth_feed():
-    return Response(gen(VideoCamera('depth')),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port = 5000)
