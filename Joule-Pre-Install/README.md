@@ -8,14 +8,22 @@ Has Wifi built-in
 * Need to Flash the BIOS first with Intel Flash tool and the updated Intel Joule BIOS, with type C cable connected to the board. [Link to Intel BIOS update](https://software.intel.com/en-us/node/721469)
 > Otherwise, it will not auto-boot the OS install program
 * IoT website has the setting up tutorials and the ubuntu website has the ubuntu OS install tutorial
-- [Install Ubuntu Tutorial Video](https://software.intel.com/en-us/videos/installing-ubuntu-on-the-intel-joule-compute-module)
+  - [Install Ubuntu Tutorial Video](https://software.intel.com/en-us/videos/installing-ubuntu-on-the-intel-joule-compute-module)
+    - With Ubuntu, the Joule is easily getting hot and force the board to shut down. Be aware of the risk of losing files.
+  - Also recommend to install light-weight OS like [Lubuntu](https://docs.lubuntu.net/)
+  - Ubuntu has a Core 16 which indicates to the embedded sys, but it requires the Internet all the times. 
 - You can also install other systems. [Check this website.](https://software.intel.com/en-us/choosing-among-oses)
 > But we are using ROS, so it would be the best to install Ubuntu system.
 * Things about Intel Joule Board:
   - It has wifi and bluetooth module on board which may be convenient feature for wireless transmission. The wifi supports wifi-direct.
   - The type -C only for flash the BIOS. We need a USB hub for the USB port.(keyboard, mouse and maybe flash drive) The micro-USB can be connected to the host machine and use putty or other serial monitor to read the debug mode serial output. (The host machine needs to install driver)
+```diff
+- The following installation of the ROS is actually not required for the final product, 
+- but I tested with ROS wireless transmission as well. (Only test purpose, not recommended to install)
+```
 
-
+------
+The following is not required any more for the final product.
   ## Install ROS and other necessary Software on ubuntu
 
 Install the Ros-Base
