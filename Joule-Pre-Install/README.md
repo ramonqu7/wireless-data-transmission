@@ -6,10 +6,12 @@ https://software.intel.com/en-us/intel-joule-getting-started
 ## Install OS on the board
 * Need to Flash the BIOS first with Intel Flash tool and the updated Intel Joule BIOS, with type C cable connected to the board. [Link to Intel BIOS update](https://software.intel.com/en-us/node/721469)
 > Otherwise, it will not auto-boot the OS install program
-
 * IoT website has the setting up tutorials and the ubuntu website has the ubuntu OS (Specifically for Joule) install tutorial. Not recommended to install the Joule Special version.
-- You may install Ubuntu 14/16 like installing on the normal PC, with option of booting from USB.
-- [Install Ubuntu Tutorial Video](https://software.intel.com/en-us/videos/installing-ubuntu-on-the-intel-joule-compute-module)
+  - You may install Ubuntu 14/16 like installing on the normal PC, with option of booting from USB.
+  - [Install Ubuntu Tutorial Video](https://software.intel.com/en-us/videos/installing-ubuntu-on-the-intel-joule-compute-module)
+    - With Ubuntu, the Joule is easily getting hot and force the board to shut down. Be aware of the risk of losing files.
+  - Also recommend to install light-weight OS like [Lubuntu](https://docs.lubuntu.net/)
+  - Ubuntu has a Core 16 which indicates to the embedded sys, but it requires the Internet all the times.
 - You can also install other systems. [Check this website.](https://software.intel.com/en-us/choosing-among-oses)
 * Things about Intel Joule Board:
   - It has wifi and bluetooth module on board which may be convenient feature for wireless transmission. The wifi supports wifi-direct.
