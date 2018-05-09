@@ -2,18 +2,18 @@
 
 Intel Joule 570x:
 https://software.intel.com/en-us/intel-joule-getting-started
-Has Wifi built-in
 
 ## Install OS on the board
 * Need to Flash the BIOS first with Intel Flash tool and the updated Intel Joule BIOS, with type C cable connected to the board. [Link to Intel BIOS update](https://software.intel.com/en-us/node/721469)
 > Otherwise, it will not auto-boot the OS install program
-* IoT website has the setting up tutorials and the ubuntu website has the ubuntu OS install tutorial
+
+* IoT website has the setting up tutorials and the ubuntu website has the ubuntu OS (Specifically for Joule) install tutorial. Not recommended to install the Joule Special version.
+- You may install Ubuntu 14/16 like installing on the normal PC, with option of booting from USB.
 - [Install Ubuntu Tutorial Video](https://software.intel.com/en-us/videos/installing-ubuntu-on-the-intel-joule-compute-module)
 - You can also install other systems. [Check this website.](https://software.intel.com/en-us/choosing-among-oses)
-> But we are using ROS, so it would be the best to install Ubuntu system.
 * Things about Intel Joule Board:
   - It has wifi and bluetooth module on board which may be convenient feature for wireless transmission. The wifi supports wifi-direct.
-  - The type -C only for flash the BIOS. We need a USB hub for the USB port.(keyboard, mouse and maybe flash drive) The micro-USB can be connected to the host machine and use putty or other serial monitor to read the debug mode serial output. (The host machine needs to install driver)
+  - The type -C is mainly used for flash the BIOS. We need a USB hub for the USB port.(keyboard, mouse and maybe flash drive) The micro-USB can be connected to the host machine and use putty or other serial monitor to read the debug mode serial output. (The host machine needs to install driver)
 
 
   ## Install ROS and other necessary Software on ubuntu
