@@ -2,6 +2,8 @@
 
 Intel Joule 570x:
 https://software.intel.com/en-us/intel-joule-getting-started
+- Basic power consumption : 12V 1A.
+- Need Mini- HDMI to connect to the monitor. 
 
 ## Install OS on the board
 * Need to Flash the BIOS first with Intel Flash tool and the updated Intel Joule BIOS, with type C cable connected to the board. [Link to Intel BIOS update](https://software.intel.com/en-us/node/721469)
