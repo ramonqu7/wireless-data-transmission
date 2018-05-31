@@ -2,7 +2,7 @@
 
 Intel Joule 570x:
 https://software.intel.com/en-us/intel-joule-getting-started
-- Basic power consumption : 12V 1A.
+- Basic power consumption : 12V 1.5A.
 - Need Mini- HDMI to connect to the monitor. 
 
 ## Install OS on the board
