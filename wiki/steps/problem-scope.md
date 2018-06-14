@@ -2,11 +2,11 @@
 
 ## Reason 1: Tangling Wires
 - Tangling external wires is always a problem of using end-effectors to do tasks. 
-![pic 1.1](img/why_0.png) 
+![pic 1.1](../img/why_0.png) 
 
 Like the pictures showing above, Assistive Dextrous Arm (ADA), the end-effector we are using in the lab, is tangled by the USB cable which connects from camera to the host machine. 
 
-![pic 1.2](img/why_1.png)
+![pic 1.2](../img/why_1.png)
 - And in some real lab test demos, wired solution affected the end-effector's kinematics range.
 For example, if ADA is trying to feed the noodles for the users, the last joint has to rotate 360 degrees many times which broke the USB cables.
 
