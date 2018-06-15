@@ -1,0 +1,9 @@
+<launch>
+
+  <node name="rgbd_compress"
+        pkg="rgbd_compress"
+        type="rgbd_compress"
+        output="screen">
+  </node>
+
+</launch>
