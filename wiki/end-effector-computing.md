@@ -61,8 +61,7 @@
     3.3 Intel Joule Box Incline enclosure Top
 
     3.4 Mount cuff connector
-
-4.  ....
+4.  Pololu 12V, 2.2A Step Down. (Voltage Regulator D24V22F12)
 5.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
 
 [Here's a detailed Bill of Materials](#orgdr23442) with pricing (as of June 2018) and links to distributors.
@@ -159,14 +158,16 @@ Finish Model
 
 ## Recommended power source
 
--   Mention what the board needs and what the arm provides
+-   Intel Joule with Intel RealSense running requires at least 1.5A with 12V
+-  Kinova Mico Joint 6 supplies max 3A with 24V
+- Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule. 
 
 
 <a id="org4e38be8"></a>
 
 ## Fabricating the cables
 
--   Show the steps to build the cable with pictures.
+-   Steps to solder the connections
 
 
 <a id="org54e2305"></a>
