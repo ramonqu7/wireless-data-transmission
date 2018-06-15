@@ -44,18 +44,29 @@
 # What you'll need
 
 1.  Intel Joule 570X Developer Kit (or comparable board)
+
+![Intel Joule](img/joule.jpg)
+
 2.  Intel RealSense D415 or D435 RGBD Camera (or openni2 support RGBD cameras)
-3.  3D Printed Parts
+
+![Intel RealSense](img/realsense.png)
+
+3.  3D Printed Parts 
+    > Model and printed object will be shown in [3D File section](#orgf55114f)
+
     3.1 Intel Joule enclosure body
+
     3.2 Intel Joule Box Flat enclosure Top
+
     3.3 Intel Joule Box Incline enclosure Top
+
     3.4 Mount cuff connector
+
 4.  ....
 5.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
 
-[Here's a detailed Bill of Materials] with pricing (as of June 2018) and links to distributors.
+[Here's a detailed Bill of Materials](#orgdr23442) with pricing (as of June 2018) and links to distributors.
 
--   Must include everything including screws from McMaster, etc.
 
 
 <a id="org437c511"></a>
@@ -90,10 +101,10 @@ Mount cuff connector
 Assembly
 
 - I used Solidworks designed each part and test the final assembled parts.
-- I printed the model with Ultimaker 2+ and XXXXX and settings are listed below:
+- I printed the model with [Ultimaker 2+](https://ultimaker.com/) and [Creator Pro](http://www.flashforge.com/creator-pro-3d-printer/) and settings are listed below:
     - Layer height: 0.1 mm
     - Infill Percentage: 50%
-    - Temoerature: 225 ........Depends on the printer
+    - Temperature: 225°C
 
 -   Alternatively, Shapeways supplies high quality 3D print services. .....Price is about.....
 
@@ -110,11 +121,17 @@ Finish Model
 
 ![mount step 1]()
 
-1. Connect the enclosure body [#3.1] and the end effector cuff connector [#3.4] with #Screw [#]
+1. Connect the enclosure body [#3.1] and the end effector cuff connector [#3.4] with 2 X Screw [#]
 
 ![mount step 2]()
 
-2. 
+2. Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
+
+> Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
+
+![mount step 3]()
+
+3. 
 
 
 
@@ -220,3 +237,14 @@ Finish Model
 # Running
 
 -   Please refer to the README in the accompanying repo [here] for instructions on running the system.
+
+
+<a id="orgdrr23431"></a>
+
+# Appendix
+
+<a id="orgdr23442"></a>
+
+## Bill of Material
+-   Will be a table
+-   Must include everything including screws from McMaster, etc.
