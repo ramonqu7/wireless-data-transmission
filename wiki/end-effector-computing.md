@@ -77,13 +77,13 @@
 
 ## Printing the 3D files
 
--   Here is the [3D Print-ready files]() for the Intel Joule housing box and mount with the End-Effector.
+-   Here is the [3D Print-ready files](./3d_model/) for the Intel Joule housing box and mount with the End-Effector.
 
-![Intel Joule enclosure body]()
+![Intel Joule enclosure body](./3d_model/enclosure_final.STL)
 
 Intel Joule enclosure body
 
-![Intel Joule Box Flat enclosure Top]()
+![Intel Joule Box Flat enclosure Top](./3d_model/Top_regular.STL)
 
 Intel Joule Box Flat enclosure Top 
 
@@ -91,7 +91,7 @@ Intel Joule Box Flat enclosure Top
 
 Intel Joule Box Incline enclosure Top 
 
-![Mount cuff connector]()
+![Mount cuff connector](./3d_model/ring_final.STL)
 
 Mount cuff connector
 
@@ -107,7 +107,7 @@ Assembly
 
 -   Alternatively, Shapeways supplies high quality 3D print services. .....Price is about.....
 
-- The finish model:
+- The final printed model:
 
 ![Finish Model]()
 
@@ -124,13 +124,19 @@ Finish Model
 
 ![mount step 2]()
 
-2. Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
-
-> Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
+2. Unscrew the Kinova Mico last joint's three screws, which are the three screws shoing in the image. 
 
 ![mount step 3]()
 
-3. 
+3. Direct securely screw the assembled parts(enclosure body + cuff connector) to the arm with screw [#]
+
+![mount step 4]()
+
+4. Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
+
+> Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
+
+
 
 
 
@@ -159,13 +165,18 @@ Finish Model
 ## Recommended power source
 
 -   Intel Joule with Intel RealSense running requires at least 1.5A with 12V
--  Kinova Mico Joint 6 supplies max 3A with 24V
-- Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule. 
+> Intel joule only requires about 0.6A with 12V to boot up.
+-   Kinova Mico Joint 6 supplies max 3A with 24V
+-   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule. 
 
 
 <a id="org4e38be8"></a>
 
 ## Fabricating the cables
+
+![schematic diagram]()
+
+-  The electronic schematic diagram of the power system. 
 
 -   Steps to solder the connections
 
@@ -174,7 +185,12 @@ Finish Model
 
 ## Connecting the cables
 
+![Kinova side]()
+
 -   Show Kinova side with pictures
+
+![plugging into board]()
+
 -   Show plugging into board
 
 
@@ -194,12 +210,34 @@ Finish Model
 
 ## Installing the OS to the Joule
 
+- Please check [this post](./Intel-Joule-Setup.md) to install the OS onto the Intel Joule.
+- In my project, I used Lubuntu (Ubuntu/Linux core 16.03 LTS) with ROS-Desktop version installed. 
+
 
 <a id="org4290339"></a>
 
 ## Installing Required Libraries
 
--   Could provide links to the repos for these libraries, but if there was anything specifically tricky, then outline it here in detail.
+- [ROS Image Transport Plugins](https://github.com/ros-perception/image_transport_plugins.git)
+
+We used Compressed Image Transport Plugins to compressed the RGB Images. 
+
+- [ROS Image Pipeline](https://github.com/ros-perception/image_pipeline.git)
+
+We used one function `point_cloud_xyzrgb` inside the `depth_image_proc` to reconstruct the point cloud data from RGB and Depth images.
+
+- [Realsense Camera Driver](https://github.com/IntelRealSense/librealsense)
+
+Please follow the [README document](https://github.com/IntelRealSense/librealsense/blob/master/readme.md) to install the driver.
+
+- [RealSense Camera ROS Wrapper](https://github.com/intel-ros/realsense)
+
+Please build this after installing the driver.
+
+> If you are using Intel Realsense R435, you may need to change the parameter.
+>......The code to do that.
+
+
 
 
 <a id="org9426616"></a>
