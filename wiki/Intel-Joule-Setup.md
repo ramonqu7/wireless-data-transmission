@@ -29,7 +29,8 @@ There are some options:
 ```
 sudo apt-get update
 sudo apt-get install git python3-pip
-sudo apt-get install -y libsm6 libxext6 && pip3 install -U opencv-python numpy primesense pillow
+sudo apt-get install -y libsm6 libxext6 && pip3 install -U opencv-python numpy 
+# sudo apt-get install primesense pillow #If you need to use Openni2 cameras
 
 #The realsense lib wrapper is for python3
 #Need to follow the instruction here to set up the machine and install python wrapper

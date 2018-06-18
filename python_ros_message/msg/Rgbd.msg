@@ -12,5 +12,5 @@ Header header        # Header timestamp should be acquisition time of image
 string encoding       # Encoding of pixels -- channel meaning, ordering, size
                       # taken from the list of strings in include/sensor_msgs/image_encodings.h
 
-uint8[] data         # Compressed image buffer
+string data         # Compressed image buffer
 
