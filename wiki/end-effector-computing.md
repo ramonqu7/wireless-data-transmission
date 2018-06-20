@@ -49,6 +49,10 @@
 
 2.  Intel RealSense D415 or D435 RGBD Camera (or openni2 support RGBD cameras)
 
+    2.1 USB type C to A 3.0 cable
+    
+    > You may use the one come within the box, or order a shorter one.
+
 ![Intel RealSense](img/realsense.png)
 
 3.  3D Printed Parts 
@@ -62,7 +66,12 @@
 
     3.4 Mount cuff connector
 4.  Pololu 12V, 2.2A Step Down. (Voltage Regulator D24V22F12)
-5.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
+5.  Screws:
+    5.1 #2 Screw......
+    5.2 #3 Screw ......
+6. cable connecting Kinova pins
+7. Round power source plug
+8.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
 
 [Here's a detailed Bill of Materials](#orgdr23442) with pricing (as of June 2018) and links to distributors.
 
@@ -130,29 +139,59 @@ Finish Model
 
 3. Direct securely screw the assembled parts(enclosure body + cuff connector) to the arm with screw [#]
 
-![mount step 4]()
-
-4. Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
-
-> Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
-
-
-
-
 
 <a id="org6f79684"></a>
 
 ## Fitting the hardware to the 3D enclosure
 
--   Picture of how to insert the Joule into the enclosure
--   Picture of attaching camera
+### Insert the Joule into the enclosure
+
+![insert the Joule into the enclosure]()
+
+
+![mount step 4]()
+
+-  Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
+
+> Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
+
+### Attach camera to the enclosure
+
+Camera Mount 1
+
+![Picture of attaching camera position 1]()
+
+Camera Mount 2
+
+![Picture of attaching camera position 2]()
+
+1. Install flat front camera mount:
+
+    5.1 Mount the Intel RealSense camera with 2 X screw [#]. 
+
+    > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
+
+    5.2 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
+
+    5.3 Secure the flat enclosure top with 4X screws [#]
+
+2. (Optional) Install incline camera mount:
+
+    6.1 Secure the incline enclosure top with 4X screws [#]
+
+    6.2 Mount the camera on the enclosure.
+
+    > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
+
+    6.3 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
 
 
 <a id="org3c07fc7"></a>
 
 ## Thermal mitigation
 
--   Picture of mounting the cooler
+-   ![Picture of mounting the cooler]()
+
 
 
 <a id="org4b2b1a1"></a>
@@ -178,33 +217,33 @@ Finish Model
 
 -  The electronic schematic diagram of the power system. 
 
--   Steps to solder the connections
+-  Final connected cable
+
+![final connected cable image]()
 
 
 <a id="org54e2305"></a>
 
 ## Connecting the cables
 
-![Kinova side]()
-
 -   Show Kinova side with pictures
 
-![plugging into board]()
+![Kinova side]()
 
 -   Show plugging into board
+
+![plugging into board]()
 
 
 <a id="orgdba8e15"></a>
 
 ## Cable summary
 
--   Show picture with Joule and all the things plugged into it
-
+-   ![Picture with Joule and all the things plugged into it]()
 
 <a id="org84be803"></a>
 
 # Software
-
 
 <a id="orgcbfb208"></a>
 
@@ -218,13 +257,15 @@ Finish Model
 
 ## Installing Required Libraries
 
-- [ROS Image Transport Plugins](https://github.com/ros-perception/image_transport_plugins.git)
+- [ROS required packages (with minor modifications)](https://github.com/ramonidea/prl_wireless_perception.git)
 
-We used Compressed Image Transport Plugins to compressed the RGB Images. 
+    - [ROS Image Transport Plugins](https://github.com/ros-perception/image_transport_plugins.git)
 
-- [ROS Image Pipeline](https://github.com/ros-perception/image_pipeline.git)
+    We used Compressed Image Transport Plugins to compressed the RGB Images. 
 
-We used one function `point_cloud_xyzrgb` inside the `depth_image_proc` to reconstruct the point cloud data from RGB and Depth images.
+    - [ROS Image Pipeline](https://github.com/ros-perception/image_pipeline.git)
+
+    We used one function `point_cloud_xyzrgb` inside the `depth_image_proc` to reconstruct the point cloud data from RGB and Depth images.
 
 - [Realsense Camera Driver](https://github.com/IntelRealSense/librealsense)
 
@@ -268,15 +309,18 @@ Please build this after installing the driver.
 
 ## ROS
 
--   Briefly mention what needs to be set for ROS to be able to see the networked devices correctly
+-   use command `ifconfig` to retrieve the IP address from your workstation. 
+
+> The ip addresses should be always the same, because we save the ip address in the router setting from the last step.
+
+-  Please make sure the Joule's `ROS_MASTER_URI` has been set to that ip address. And set the `ROS_IP` correctly. 
 
 
 <a id="orgdd11d53"></a>
 
 # Running
 
--   Please refer to the README in the accompanying repo [here] for instructions on running the system.
-
+-   Please refer to the ADA-Joule demo described in this [document](Intel-Joule-ADA-Perception-Demo.md).
 
 <a id="orgdrr23431"></a>
 
