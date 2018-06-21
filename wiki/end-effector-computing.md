@@ -188,9 +188,13 @@ Camera Mount 2
 
 ## Thermal mitigation
 
--   ![Picture of mounting the cooler]()
+Parts[#]
 
+-   ![Picture of cooler](img/coolinig.png)
 
+You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html). 
+
+The problem we encouter is the Joule would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
 
 <a id="org4b2b1a1"></a>
 

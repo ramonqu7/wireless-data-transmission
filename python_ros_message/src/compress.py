@@ -18,7 +18,6 @@ def callback(rgb, dep):
     rgbd_msg.header = dep.header
     rgbd_msg.encoding = rgb.encoding
 
-
     try:
         rgb_data = bridge.imgmsg_to_cv2(rgb,"brg8")
     except CvBridgeError as e:
@@ -33,12 +32,14 @@ def callback(rgb, dep):
         print(e)
     #Trim down to 1d Array
     dep_data = np.hsplit(dep_data,3)[0]
-
     dep_compressed = zlib.compress(dep_data)
 
-    final_compressed = rgb_compressed + b'Some separator'+ dep_compressed
+    final_compressed = rgb_compressed + b'ColDep'+ dep_compressed
 
-    rgbd_msg.data = 
+    rgbd_msg.data = final_compressed
+
+    pub.publish(rgbd_msg)
+
 
 '''
         if self.depth:
