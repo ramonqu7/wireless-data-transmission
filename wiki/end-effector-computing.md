@@ -21,7 +21,6 @@
 5.  [Software](#org84be803)
     1.  [Installing the OS to the Joule](#orgcbfb208)
     2.  [Installing Required Libraries](#org4290339)
-    3.  [Installing our Wireless Data Transmission Repo](#org9426616)
 6.  [Recommended Networking Configuration](#orgea01b4a)
     1.  [Client-side (off-board computing) Networking](#org06cd64d)
     2.  [Server-side (end-effector computing) Networking](#orgc67814a)
@@ -88,19 +87,19 @@
 
 -   Here is the [3D Print-ready files](./3d_model/) for the Intel Joule housing box and mount with the End-Effector.
 
-![Intel Joule enclosure body](./3d_model/enclosure_final.STL)
+[Intel Joule enclosure body](./3d_model/enclosure_final.STL)
 
 Intel Joule enclosure body
 
-![Intel Joule Box Flat enclosure Top](./3d_model/Top_regular.STL)
+[Intel Joule Box Flat enclosure Top](./3d_model/Top_regular.STL)
 
 Intel Joule Box Flat enclosure Top 
 
-![Intel Joule Box Incline enclosure Top ]()
+[Intel Joule Box Incline enclosure Top ]()
 
 Intel Joule Box Incline enclosure Top 
 
-![Mount cuff connector](./3d_model/ring_final.STL)
+[Mount cuff connector](./3d_model/ring_final.STL)
 
 Mount cuff connector
 
@@ -118,9 +117,8 @@ Assembly
 
 - The final printed model:
 
-![Finish Model]()
 
-Finish Model
+Finish Models
 
 
 <a id="org37ac3e7"></a>
@@ -278,12 +276,6 @@ Please build this after installing the driver.
 > If you are using Intel Realsense R435, you may need to change the parameter.
 >......The code to do that.
 
-
-
-
-<a id="org9426616"></a>
-
-## Installing our Wireless Data Transmission Repo
 
 
 <a id="orgea01b4a"></a>
