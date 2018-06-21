@@ -1,9 +1,34 @@
+<!-- Reconstruct point cloud locally-->
+
 <launch>
 
-  <node name="rgbd_compress"
-        pkg="rgbd_compress"
-        type="rgbd_compress"
-        output="screen">
+<node pkg="nodelet" type="nodelet" args="manager" name="depth_transforms_manager" output="screen" />
+
+  <!--node pkg="rgbd_decompress" name="decompress.py" type="decompress.py" output="screen" /-->
+
+ <node pkg="nodelet" type="nodelet" name="cloudify_py" output="screen"
+
+      args="load depth_image_proc/point_cloud_xyzrgb depth_transforms_manager --no-bond">
+
+    <!-- Input: Camera calibration and metadata.  (sensor_msgs/CameraInfo) -->
+
+    <remap from="rgb/camera_info" to="/camera/aligned_depth_to_color/camera_info" />
+
+    <!-- Input: Rectified color image. (sensor_msgs/Image) -->
+
+    <remap from="rgb/image_rect_color" to="/camera/rgb/decompress" />
+
+    <!-- Input: Rectified depth image, registered to the RGB camera. (sensor_msgs/Image) -->
+
+    <remap from="depth_registered/image_rect" to="/camera/depth/decompress"/>
+
+    <!-- Output: XYZ point cloud. If using PCL, subscribe as PointCloud<PointXYZ>.  (sensor_msgs/PointCloud2)  -->
+
+    <remap from="depth_registered/points" to="/camera/color/depth/points"/>
+
   </node>
+
+
+
 
 </launch>

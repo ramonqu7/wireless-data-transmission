@@ -53,7 +53,7 @@ if __name__ == '__main__':
     ts = message_filters.TimeSynchronizer([rgb_sub, dep_sub], 30)
 
     pub = rospy.Publisher('/camera/rgbd', rgbd, queue_size=30)
-    rospy.init_node('Joule', anonymous=True)
+    rospy.init_node('Compressor', anonymous=False)
 
     ts.registerCallback(callback)
 
