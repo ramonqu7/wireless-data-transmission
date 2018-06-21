@@ -19,7 +19,11 @@
     3.  [Connecting the cables](#org54e2305)
     4.  [Cable summary](#orgdba8e15)
 5.  [Software](#org84be803)
+<<<<<<< HEAD
     1.  [Installing the OS to the Joule™](#orgcbfb208)
+=======
+    1.  [Installing the OS to the Joule](#orgcbfb208)
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
     2.  [Installing Required Libraries](#org4290339)
 6.  [Recommended Networking Configuration](#orgea01b4a)
     1.  [Client-side (off-board computing) Networking](#org06cd64d)
@@ -42,32 +46,53 @@
 
 # What you'll need
 
+<<<<<<< HEAD
 1.  Intel® Joule™ 570X Developer Kit (or comparable board)
 
 ![Intel® Joule™](img/joule.jpg)
 
 2.  Intel® RealSense D415 or D435 RGBD Camera (or openni2 support RGBD cameras)
+=======
+1.  Intel Joule 570X Developer Kit (or comparable board)
+
+![Intel Joule](img/joule.jpg)
+
+2.  Intel RealSense D415 or D435 RGBD Camera (or openni2 support RGBD cameras)
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
     2.1 USB type C to A 3.0 cable
     
     > You may use the one come within the box, or order a shorter one.
 
+<<<<<<< HEAD
 ![Intel® RealSense](img/realsense.png)
+=======
+![Intel RealSense](img/realsense.png)
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 3.  3D Printed Parts 
     > Model and printed object will be shown in [3D File section](#orgf55114f)
 
+<<<<<<< HEAD
     3.1 Intel® Joule™ enclosure body
 
     3.2 Intel® Joule™ Box Flat enclosure Top
 
     3.3 Intel® Joule™ Box Incline enclosure Top
+=======
+    3.1 Intel Joule enclosure body
+
+    3.2 Intel Joule Box Flat enclosure Top
+
+    3.3 Intel Joule Box Incline enclosure Top
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
     3.4 Mount cuff connector
 4.  Pololu 12V, 2.2A Step Down. (Voltage Regulator D24V22F12)
 5.  Screws:
     5.1 #2 Screw......
     5.2 #3 Screw ......
+<<<<<<< HEAD
 6. Flat Flex, Ribbon Jumper Cables (20 pins 2.000" (50.80mm)) Molex, LLC 0152670357
 
 ![pinConnector](./img/pin_connector.jpg)
@@ -78,10 +103,19 @@
 ![Active cooling](./img/cooling.png)
 
 9.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
+=======
+6. cable connecting Kinova pins
+7. Round power source plug
+8.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 [Here's a detailed Bill of Materials](#orgdr23442) with pricing (as of June 2018) and links to distributors.
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 <a id="org437c511"></a>
 
 # Mechanical
@@ -91,6 +125,7 @@
 
 ## Printing the 3D files
 
+<<<<<<< HEAD
 -   Here is the [3D Print-ready files](./3d_model/) for the Intel® Joule™ housing box and mount with the End-Effector.
 
 [Intel® Joule™ enclosure body](./3d_model/enclosure_final.STL)
@@ -101,6 +136,26 @@
 
 [Mount cuff connector](./3d_model/ring_final.STL)
 
+=======
+-   Here is the [3D Print-ready files](./3d_model/) for the Intel Joule housing box and mount with the End-Effector.
+
+[Intel Joule enclosure body](./3d_model/enclosure_final.STL)
+
+Intel Joule enclosure body
+
+[Intel Joule Box Flat enclosure Top](./3d_model/Top_regular.STL)
+
+Intel Joule Box Flat enclosure Top 
+
+[Intel Joule Box Incline enclosure Top ]()
+
+Intel Joule Box Incline enclosure Top 
+
+[Mount cuff connector](./3d_model/ring_final.STL)
+
+Mount cuff connector
+
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 ![Assembly]()
 
 Assembly
@@ -115,6 +170,7 @@ Assembly
 
 - The final printed model:
 
+<<<<<<< HEAD
 ![Mount cuff connector](./img/connector_printed.jpg)
 
 Mount cuff connector
@@ -130,6 +186,11 @@ Intel® Joule™ Box Flat enclosure Top
 ![Intel® Joule™ Box Incline enclosure Top]()
 
 Intel® Joule™ Box Incline enclosure Top
+=======
+
+Finish Models
+
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 <a id="org37ac3e7"></a>
 
@@ -152,6 +213,7 @@ Intel® Joule™ Box Incline enclosure Top
 
 ## Fitting the hardware to the 3D enclosure
 
+<<<<<<< HEAD
 ### Insert the Joule™ into the enclosure
 
 ![insert the Joule™ into the enclosure]()
@@ -159,6 +221,16 @@ Intel® Joule™ Box Incline enclosure Top
 ![mount step 4]()
 
 -  Secure the Intel® Joule™ board [#1] into the enclosure with 4 X Screws [#].
+=======
+### Insert the Joule into the enclosure
+
+![insert the Joule into the enclosure]()
+
+
+![mount step 4]()
+
+-  Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 > Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
 
@@ -174,11 +246,19 @@ Camera Mount 2
 
 1. Install flat front camera mount:
 
+<<<<<<< HEAD
     5.1 Mount the Intel® RealSense camera with 2 X screw [#]. 
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
     5.2 Connect camera and the Intel® Joule™ with USB type C to A 3.0 cable [#2.1]
+=======
+    5.1 Mount the Intel RealSense camera with 2 X screw [#]. 
+
+    > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
+
+    5.2 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
     5.3 Secure the flat enclosure top with 4X screws [#]
 
@@ -190,13 +270,18 @@ Camera Mount 2
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
+<<<<<<< HEAD
     6.3 Connect camera and the Intel® Joule™ with USB type C to A 3.0 cable [#2.1]
+=======
+    6.3 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 
 <a id="org3c07fc7"></a>
 
 ## Thermal mitigation
 
+<<<<<<< HEAD
 Parts[#8]
 
 -   ![Picture of cooler](./img/cooling.png)
@@ -204,6 +289,15 @@ Parts[#8]
 You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html). 
 
 The problem we encouter is the Joule™ would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
+=======
+Parts[#]
+
+-   ![Picture of cooler](img/coolinig.png)
+
+You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html). 
+
+The problem we encouter is the Joule would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 <a id="org4b2b1a1"></a>
 
@@ -214,10 +308,17 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 ## Recommended power source
 
+<<<<<<< HEAD
 -   Intel® Joule™ with Intel® RealSense running requires at least 1.5A with 12V
 > Intel® joule only requires about 0.6A with 12V to boot up.
 -   Kinova Mico Joint 6 supplies max 3A with 24V
 -   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule™. 
+=======
+-   Intel Joule with Intel RealSense running requires at least 1.5A with 12V
+> Intel joule only requires about 0.6A with 12V to boot up.
+-   Kinova Mico Joint 6 supplies max 3A with 24V
+-   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule. 
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 
 <a id="org4e38be8"></a>
@@ -250,7 +351,11 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 ## Cable summary
 
+<<<<<<< HEAD
 -   ![Picture with Joule™ and all the things plugged into it]()
+=======
+-   ![Picture with Joule and all the things plugged into it]()
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 <a id="org84be803"></a>
 
@@ -258,9 +363,15 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 <a id="orgcbfb208"></a>
 
+<<<<<<< HEAD
 ## Installing the OS to the Joule™
 
 - Please check [this post](./Intel®-Joule™-Setup.md) to install the OS onto the Intel® Joule™.
+=======
+## Installing the OS to the Joule
+
+- Please check [this post](./Intel-Joule-Setup.md) to install the OS onto the Intel Joule.
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 - In my project, I used Lubuntu (Ubuntu/Linux core 16.03 LTS) with ROS-Desktop version installed. 
 
 
@@ -278,6 +389,7 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
     We used one function `point_cloud_xyzrgb` inside the `depth_image_proc` to reconstruct the point cloud data from RGB and Depth images.
 
+<<<<<<< HEAD
     > And their dependency packages `image_common` and `image_geometry`
 
     - [RGBD_Message](https://github.com/ramonidea/prl_wireless_perception/tree/master/rgbd_message)
@@ -293,6 +405,17 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
     Please build this after installing the driver.
 
 > If you are using Intel® Realsense R435, you may need to change the parameter to .
+=======
+- [Realsense Camera Driver](https://github.com/IntelRealSense/librealsense)
+
+Please follow the [README document](https://github.com/IntelRealSense/librealsense/blob/master/readme.md) to install the driver.
+
+- [RealSense Camera ROS Wrapper](https://github.com/intel-ros/realsense)
+
+Please build this after installing the driver.
+
+> If you are using Intel Realsense R435, you may need to change the parameter.
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 >......The code to do that.
 
 
@@ -324,17 +447,25 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 > The ip addresses should be always the same, because we save the ip address in the router setting from the last step.
 
+<<<<<<< HEAD
 -  Please make sure the Joule™'s `ROS_MASTER_URI` has been set to that ip address. And set the `ROS_IP` correctly. 
 
 
     As an example, if your workstation (ip address `192.168.1.10`) running `roscore` has a wireless adapter IP of `192.168.1.12`, then make sure your terminal running the ROS environment has its `ROS_MASTER_URI` pointed to the workstation like so: `export ROS_MASTER_URI=http://192.168.1.10:11311` and set joule ip address with command: `export ROS_IP=192.168.1.12`
+=======
+-  Please make sure the Joule's `ROS_MASTER_URI` has been set to that ip address. And set the `ROS_IP` correctly. 
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 
 <a id="orgdd11d53"></a>
 
 # Running
 
+<<<<<<< HEAD
 -   Please refer to the ADA-Joule™ demo described in this [document](Intel®-Joule™-ADA-Perception-Demo.md).
+=======
+-   Please refer to the ADA-Joule demo described in this [document](Intel-Joule-ADA-Perception-Demo.md).
+>>>>>>> 99117247d2d4e9cd35327a49649f4ba50184886e
 
 <a id="orgdrr23431"></a>
 
