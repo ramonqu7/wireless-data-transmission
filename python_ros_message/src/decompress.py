@@ -46,7 +46,7 @@ def callback(rgbd):
 
 if __name__ == '__main__':
     bridge = CvBridge()
-    rospy.init_node('Joule', anonymous=True)
+    rospy.init_node('DeCompressor', anonymous=False)
     sub = rospy.Subscriber('/camera/rgbd',rgbd, callback)
     rgb_pub = rospy.Publisher('camera/rgb/decompress', sensor_msgs.msg.Image,queue_size=20)
     dep_pub = rospy.Publisher('camera/depth/decompress', sensor_msgs.msg.Image,queue_size=20)
