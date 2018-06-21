@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(empty_package)
+project(rgbd_compress)
 
 #set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
@@ -12,6 +12,16 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+)
+
+add_message_files(
+  FILES
+  rgbd.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 catkin_package(
@@ -28,35 +38,27 @@ link_directories(
   ${catkin_LIBRARY_DIRS}
 )
 
-add_library(${PROJECT_NAME} src/${PROJECT_NAME}.cc)
+#add_library(${PROJECT_NAME} src/${PROJECT_NAME}.cc)
 
-add_message_files(
-  FILES
-  rgbd.msg
-)
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
 
-target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+#target_link_libraries(${PROJECT_NAME}
+#  ${catkin_LIBRARIES}
+#)
 
-install(TARGETS ${PROJECT_NAME}
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS ${PROJECT_NAME}
+#  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-)
+#install(DIRECTORY include/${PROJECT_NAME}/
+#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#  FILES_MATCHING PATTERN "*.h"
+#)
 
-add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cc)
-target_link_libraries(${PROJECT_NAME}_node
-  ${PROJECT_NAME}
-  ${catkin_LIBRARIES}
-)
+#add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cc)
+#target_link_libraries(${PROJECT_NAME}_node
+#  ${PROJECT_NAME}
+#  ${catkin_LIBRARIES}
+#)

@@ -14,5 +14,5 @@
 
   <run_depend>roscpp</run_depend>
   <build_depend>message_generation</build_depend>
-  <exec_depend>message_runtime</exec_depend>
+  <run_depend>message_runtime</run_depend>
 </package>
