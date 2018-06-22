@@ -1,5 +1,9 @@
 # End-effector Computing
 
+## Yiren (Ramon) Qu, Rosario Scalise
+
+![PRL](img/prl.PNG)![CSE](img/cse.PNG)
+
 ![ADA](img/intro.jpg)
 
 ---
@@ -92,6 +96,7 @@
 ## Printing the 3D files
 
 -   Here is the [3D Print-ready files](./3d_model/) for the Intel® Joule™ housing box and mount with the End-Effector.
+![Intel® Joule™ enclosure body](img/enclosure_view.PNG)
 
 [Intel® Joule™ enclosure body](./3d_model/enclosure_final.STL)
 
@@ -99,9 +104,13 @@
 
 [Intel® Joule™ Box Incline enclosure Top ]()
 
+![Mount cuff connector](./img/cuff_link.png)
+
 [Mount cuff connector](./3d_model/ring_final.STL)
 
-![Assembly]()
+![Flat Assembly](./img/flat_assembly.png)
+
+![Incline Assembly](./img/incline_assembly.png)
 
 Assembly
 
@@ -205,6 +214,8 @@ You may purchase the part from this [site](https://store.gumstix.com/fansink-int
 
 The problem we encouter is the Joule™ would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
 
+![active_cooling](img/active_cooling.PNG)
+
 <a id="org4b2b1a1"></a>
 
 # Electrical
@@ -224,13 +235,17 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 ## Fabricating the cables
 
-![schematic diagram]()
+![schematic diagram](img/elec.PNG)
 
 -  The electronic schematic diagram of the power system. 
 
+
+![final connected cable image1](img/connected_1.PNG)
+
+![final connected cable image2](img/connected_2.PNG)
+
 -  Final connected cable
 
-![final connected cable image]()
 
 
 <a id="org54e2305"></a>
@@ -295,12 +310,22 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 > If you are using Intel® Realsense R435, you may need to change the parameter to .
 >......The code to do that.
 
+## Networking Diagram
 
+![Optiuon 1](./img/option_1.png)
+
+Option 1
+
+
+![Option 2](./img/option_2.png)
+
+Option 2
 
 <a id="orgea01b4a"></a>
 
 # Recommended Networking Configuration
 
+![Networking](img/networking.PNG)
 
 <a id="org06cd64d"></a>
 
