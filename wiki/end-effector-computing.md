@@ -104,13 +104,13 @@
 
 [Intel® Joule™ Box Incline enclosure Top ]()
 
-![Mount cuff connector](./img/cuff_link.png)
+![Mount cuff connector](./img/cuff_link.PNG)
 
 [Mount cuff connector](./3d_model/ring_final.STL)
 
-![Flat Assembly](./img/flat_assembly.png)
+![Flat Assembly](./img/flat_assembly.PNG)
 
-![Incline Assembly](./img/incline_assembly.png)
+![Incline Assembly](./img/incline_assembly.PNG)
 
 Assembly
 
@@ -312,12 +312,12 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 ## Networking Diagram
 
-![Optiuon 1](./img/option_1.png)
+![Optiuon 1](./img/option_1.PNG)
 
 Option 1
 
 
-![Option 2](./img/option_2.png)
+![Option 2](./img/option_2.PNG)
 
 Option 2
 
