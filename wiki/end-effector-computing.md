@@ -10,36 +10,25 @@
 
 # Table of Contents
 
-1.  [Notes for writing:](#org4a85d46)
-2.  [What you'll need](#org11f013c)
-3.  [Mechanical](#org437c511)
+1.  [What you'll need](#org11f013c)
+2.  [Mechanical](#org437c511)
     1.  [Printing the 3D files](#orgf55114f)
     2.  [Mounting the enclosure to the robot arm](#org37ac3e7)
     3.  [Fitting the hardware to the 3D enclosure](#org6f79684)
     4.  [Thermal mitigation](#org3c07fc7)
-4.  [Electrical](#org4b2b1a1)
+3.  [Electrical](#org4b2b1a1)
     1.  [Recommended power source](#org7981dc9)
     2.  [Fabricating the cables](#org4e38be8)
     3.  [Connecting the cables](#org54e2305)
     4.  [Cable summary](#orgdba8e15)
-5.  [Software](#org84be803)
+4.  [Software](#org84be803)
     1.  [Installing the OS to the Joule™](#orgcbfb208)
     2.  [Installing Required Libraries](#org4290339)
-6.  [Recommended Networking Configuration](#orgea01b4a)
+5.  [Recommended Networking Configuration](#orgea01b4a)
     1.  [Client-side (off-board computing) Networking](#org06cd64d)
     2.  [Server-side (end-effector computing) Networking](#orgc67814a)
     3.  [ROS](#orge867589)
-7.  [Running](#orgdd11d53)
-
-
-<a id="org4a85d46"></a>
-
-# Notes for writing:
-
--   We might be able to call this work 'End-effector Computing'
--   The first time you refer to parts like 'buck converter', use number next to the part like:
-    -   "Solder the Buck Converter [#6] by to the leads from the DC power Jack [#8]".
-    -   These part numbers should be the same as in the "What you'll need" section and in the BOM
+6.  [Running](#orgdd11d53)
 
 
 <a id="org11f013c"></a>
@@ -70,13 +59,17 @@
     3.4 Mount cuff connector
 4.  Pololu 12V, 2.2A Step Down. (Voltage Regulator D24V22F12)
 5.  Screws:
+
     5.1 #2 Screw......
+
     5.2 #3 Screw ......
+
 6. Flat Flex, Ribbon Jumper Cables (20 pins 2.000" (50.80mm)) Molex, LLC 0152670357
 
 ![pinConnector](./img/pin_connector.jpg)
 
 7. Round power source plug
+
 8. Active Cooling System for Intel® Joule™ Module
 
 ![Active cooling](./img/cooling.png)
@@ -90,12 +83,12 @@
 
 # Mechanical
 
-
 <a id="orgf55114f"></a>
 
 ## Printing the 3D files
 
 -   Here is the [3D Print-ready files](./3d_model/) for the Intel® Joule™ housing box and mount with the End-Effector.
+
 ![Intel® Joule™ enclosure body](img/enclosure_view.PNG)
 
 [Intel® Joule™ enclosure body](./3d_model/enclosure_final.STL)
@@ -120,7 +113,7 @@ Assembly
     - Infill Percentage: 50%
     - Temperature: 225°C
 
--   Alternatively, Shapeways supplies high quality 3D print services. .....Price is about.....
+> - Alternatively, Shapeways supplies high quality 3D print services.
 
 - The final printed model:
 
@@ -146,7 +139,7 @@ Intel® Joule™ Box Incline enclosure Top
 
 ![mount step 1]()
 
-1. Connect the enclosure body [#3.1] and the end effector cuff connector [#3.4] with 2 X Screw [#]
+1. Connect the enclosure body [#3.1] and the end effector cuff connector [#3.4] with 2 Screws [#]
 
 ![mount step 2]()
 
@@ -215,6 +208,8 @@ You may purchase the part from this [site](https://store.gumstix.com/fansink-int
 The problem we encouter is the Joule™ would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
 
 ![active_cooling](img/active_cooling.PNG)
+
+> When installing this module, you need to take off the four screws which directly on the CPU module. Please remove them carefully and screw them securely with the active cooling module.
 
 <a id="org4b2b1a1"></a>
 
@@ -316,10 +311,15 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 Option 1
 
+This option is mainly rely on Python codec and ROS realsense wrapper. It compresses RGB and Depth into one serialized array topic with custom message type: `/camera/rgbd`. And the client side run the decompress methods to separate the one topic into two topics: `/camera/color/decompressed` and `/camera/depth/decompressed`, or it may use the decompression pacakge, which you can call the decompress function in your client side and decompress into two frames without republishing.
+
+
 
 ![Option 2](./img/option_2.PNG)
 
 Option 2
+
+This option is mainly rely on C++ and ROS realsense wrapper. It compresses RGB and Depth image separately into two topics: `/camera/color/image_raw/compressed` and `/camera/depth/image_raw/compressedDepth`. And the client side may use `Message_filter` to synchronize those two topics. 
 
 <a id="orgea01b4a"></a>
 
@@ -331,14 +331,18 @@ Option 2
 
 ## Client-side (off-board computing) Networking
 
--   Show router and configuration page with settings we are using
+-   We are currently using [#] TP-Link XXXX Router. 
+-   We set the static IP addresses for both the client side and the server side. 
 
+> For example, you may set the client side to be static as 192.168.2.171. And the joule be 192.168.2.176.
+
+We will run the roscore on the client side. 
 
 <a id="orgc67814a"></a>
 
 ## Server-side (end-effector computing) Networking
 
--   Similarly, show how this is configured (if anything special)
+-   Because we run the rerscore on the client side, please use command to set `ROS_MASTER_URI` and `ROS_IP` on each machine.
 
 
 <a id="orge867589"></a>
@@ -359,7 +363,7 @@ Option 2
 
 # Running
 
--   Please refer to the ADA-Joule™ demo described in this [document](Intel®-Joule™-ADA-Perception-Demo.md).
+-   Please refer to the ADA-Joule™ demo described in this [document](Intel-Joule-ADA-Perception-Demo.md).
 
 <a id="orgdrr23431"></a>
 
@@ -368,5 +372,17 @@ Option 2
 <a id="orgdr23442"></a>
 
 ## Bill of Material
--   Will be a table
--   Must include everything including screws from McMaster, etc.
+
+|                   Part Name                   | Num of Part |    Price   |
+|:---------------------------------------------:|:-----------:|:----------:|
+|         Intel Joule 570x Developer Kit        |      1      |   $585.00  |
+|             Intel Real Sense D435             |      1      |   $179.00  |
+|             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |
+|                  Kinova Robot                 |      1      | $40,000.00 |
+|           Intel Joule Box (3d print)          |      1      |    Free    |
+|             Wrist Mount(3d print)             |      1      |    Free    |
+|                   M3 Screws                   |     100     |            |
+|                   M3 Washer                   |      20     |            |
+|                   M2 Screws                   |     100     |            |
+|              Active cooling parts             |      1      |            |
+| Pololu 12v 2.2A step down regulator D22V22F12 |      1      |            |
