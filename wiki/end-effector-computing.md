@@ -2,7 +2,7 @@
 
 ## Yiren (Ramon) Qu, Rosario Scalise
 
-![PRL](img/prl.PNG)![CSE](img/cse.PNG)
+<a href="https://github.com/ramonidea/wireless-data-transmission/blob/master/wiki/img/prl.PNG" target="_blank"><img style="height:100px;" alt="PRL" src="https://github.com/ramonidea/wireless-data-transmission/raw/master/wiki/img/prl.PNG"></a> ![CSE](img/cse.PNG)
 
 ![ADA](img/intro.jpg)
 
