@@ -2,7 +2,7 @@
 
 ## Yiren (Ramon) Qu, Rosario Scalise
 
-![PRL](img/prl.PNG)![CSE](img/cse.PNG)
+![CSE](img/prl.PNG) ![CSE](img/cse.PNG)
 
 ![ADA](img/intro.jpg)
 
