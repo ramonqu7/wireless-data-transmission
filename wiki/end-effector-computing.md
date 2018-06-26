@@ -34,7 +34,7 @@
 <a id="org11f013c"></a>
 
 # What you'll need
-
+> See [Appendix](orgdrr23431) for an itemized list with purchase links (updated as of June 2018).
 1.  Intel® Joule™ 570X Developer Kit (or comparable board)
 
 ![Intel® Joule™](img/joule.jpg)
@@ -43,12 +43,12 @@
 
     2.1 USB type C to A 3.0 cable
     
-    > You may use the one come within the box, or order a shorter one.
+    > You may use the cable included with the Joule, or order a shorter one.
 
 ![Intel® RealSense](img/realsense.png)
 
 3.  3D Printed Parts 
-    > Model and printed object will be shown in [3D File section](#orgf55114f)
+    > Models and printed object can be found in the [3D File section](#orgf55114f)
 
     3.1 Intel® Joule™ enclosure body
 
@@ -68,54 +68,52 @@
 
 ![pinConnector](./img/pin_connector.jpg)
 
-7. Round power source plug
+7. DC jack for Joule power source (you can "borrow" one from most standard wall-wart style adapters).
 
 8. Active Cooling System for Intel® Joule™ Module
 
 ![Active cooling](./img/cooling.png)
 
-9.  Optionally, but best for this application Kinova Mico (you could use your own robot and modify the 'cuff mount')
-
-[Here's a detailed Bill of Materials](#orgdr23442) with pricing (as of June 2018) and links to distributors.
-
+9. Optional based upon resources, but we used the Kinova Jaco 7-DOF manipulator (you could also use your own robot and modify the 'cuff mount')
 
 <a id="org437c511"></a>
 
-# Mechanical
+# 🔧 Mechanical
 
 <a id="orgf55114f"></a>
 
 ## Printing the 3D files
 
--   Here is the [3D Print-ready files](./3d_model/) for the Intel® Joule™ housing box and mount with the End-Effector.
+-   Here are the [3D Print-ready files](./3d_model/) for the Intel® Joule™ housing box and mount with the end-effector.
 
 ![Intel® Joule™ enclosure body](img/enclosure_view.PNG)
 
 [Intel® Joule™ enclosure body](./3d_model/enclosure_final.STL)
 
-[Intel® Joule™ Box Flat enclosure Top](./3d_model/Top_regular.STL)
+[Intel® Joule™ box flat enclosure top](./3d_model/Top_regular.STL)
 
-[Intel® Joule™ Box Incline enclosure Top ]()
+[Intel® Joule™ box incline enclosure top ]()
+> Note: The incline top is to allow for mounting the camera further back and altering its view angle.
 
 ![Mount cuff connector](./img/cuff_link.PNG)
 
 [Mount cuff connector](./3d_model/ring_final.STL)
 
-![Flat Assembly](./img/flat_assembly.PNG)
+![Flat assembly](./img/flat_assembly.PNG)
 
-![Incline Assembly](./img/incline_assembly.PNG)
+![Incline assembly](./img/incline_assembly.PNG)
 
-Assembly
+### Print Settings
 
-- I used Solidworks designed each part and test the final assembled parts.
-- I printed the model with [Ultimaker 2+](https://ultimaker.com/) and [Creator Pro](http://www.flashforge.com/creator-pro-3d-printer/) and settings are listed below:
+- We used Solidworks to design and test assembly fit for each part.
+- We printed the model with [Ultimaker 2+](https://ultimaker.com/) and [Creator Pro](http://www.flashforge.com/creator-pro-3d-printer/). The settings used are listed below:
     - Layer height: 0.1 mm
     - Infill Percentage: 50%
     - Temperature: 225°C
 
-> - Alternatively, Shapeways supplies high quality 3D print services.
+> - Alternatively, [Shapeways](www.shapeways.com) supplies high quality 3D print services.
 
-- The final printed model:
+- The final printed models:
 
 ![Mount cuff connector](./img/connector_printed.jpg)
 
@@ -127,11 +125,11 @@ Intel® Joule™ enclosure body
 
 ![Intel® Joule™ Box Flat enclosure Top]()
 
-Intel® Joule™ Box Flat enclosure Top
+Intel® Joule™ box flat enclosure top
 
 ![Intel® Joule™ Box Incline enclosure Top]()
 
-Intel® Joule™ Box Incline enclosure Top
+Intel® Joule™ boox incline enclosure top
 
 <a id="org37ac3e7"></a>
 
@@ -139,15 +137,15 @@ Intel® Joule™ Box Incline enclosure Top
 
 ![mount step 1]()
 
-1. Connect the enclosure body [#3.1] and the end effector cuff connector [#3.4] with 2 Screws [#]
+1. Connect the enclosure body [#3.1] and the end-effector cuff connector [#3.4] with 2 Screws [#]
 
 ![mount step 2]()
 
-2. Unscrew the Kinova Mico last joint's three screws, which are the three screws shoing in the image. 
+2. Unscrew the Kinova Jaco's last joint's three screws, which are the three screws shoing in the image. 
 
 ![mount step 3]()
 
-3. Direct securely screw the assembled parts(enclosure body + cuff connector) to the arm with screw [#]
+3. Directly secure the assembled parts (enclosure body + cuff connector) to the arm with screw [#]
 
 
 <a id="org6f79684"></a>
@@ -205,7 +203,7 @@ Parts[#8]
 
 You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html). 
 
-The problem we encouter is the Joule™ would auto-shut down due to the high temperatures. The passive cooling option is not sufficient to cool it down when the camera is running.Then, we used this active cooling part to solve the issue.
+The problem we encoutered was that the Joule™ would automatically shutdown due to the high temperatures. The passive cooling option is not a sufficient cooling option when the camera is running. With active cooling, we were able to run the camera at full FPS indefinitely without issue.
 
 ![active_cooling](img/active_cooling.PNG)
 
@@ -213,16 +211,16 @@ The problem we encouter is the Joule™ would auto-shut down due to the high tem
 
 <a id="org4b2b1a1"></a>
 
-# Electrical
+# ⚡️ Electrical
 
 
 <a id="org7981dc9"></a>
 
-## Recommended power source
+## 🔌 Recommended power source
 
--   Intel® Joule™ with Intel® RealSense running requires at least 1.5A with 12V
-> Intel® joule only requires about 0.6A with 12V to boot up.
--   Kinova Mico Joint 6 supplies max 3A with 24V
+-   Intel® Joule™ with Intel® RealSense D435 running requires ≥ 1.5A @ 12V
+> ❗️Intel® joule only requires ~0.6A @ 12V to boot.
+-   Kinova Mico Joint 6 supplies max 3A @ 24V
 -   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule™. 
 
 
