@@ -60,9 +60,13 @@
 4.  Pololu 12V, 2.2A Step Down. (Voltage Regulator D24V22F12)
 5.  Screws:
 
-    5.1 #2 Screw......
+    5.1 M2 X 8 Screw
 
-    5.2 #3 Screw ......
+    5.2 M3 X 6mm Screw
+
+    5.3 M3 X 10mm Screw
+
+    5.4 M? X ? Screw (for incline top camera)
 
 6. Flat Flex, Ribbon Jumper Cables (20 pins 2.000" (50.80mm)) Molex, LLC 0152670357
 
@@ -70,11 +74,15 @@
 
 7. DC jack for Joule power source (you can "borrow" one from most standard wall-wart style adapters).
 
+![DC Jack](./img/dcjack.png)
+
 8. Active Cooling System for Intel Joule Module
 
 ![Active cooling](./img/cooling.png)
 
 9. Optional based upon resources, but we used the Kinova Jaco 7-DOF manipulator (you could also use your own robot and modify the 'cuff mount')
+
+10. Wi-Fi Router. We are using TP Link AC1900.
 
 <a id="org437c511"></a>
 
@@ -90,16 +98,24 @@
 
 [Intel Joule enclosure body](./3d_model/enclosure_final.STL)
 
+![Intel Joule box flat enclosure top](./img/flat_top.PNG)
+
 [Intel Joule box flat enclosure top](./3d_model/Top_regular.STL)
 
-[Intel Joule box incline enclosure top ]()
+![Intel Joule box incline enclosure top](./img/incline.PNG)
+
+[Intel Joule box incline enclosure top ](./3d_model/Top_incline.STL)
 > Note: The incline top is to allow for mounting the camera further back and altering its view angle.
 
 ![Mount cuff connector](./img/cuff_link.PNG)
 
 [Mount cuff connector](./3d_model/ring_final.STL)
 
+Assembly look with flat case top:
+
 ![Flat assembly](./img/flat_assembly.PNG)
+
+Assembly look with incline case top:
 
 ![Incline assembly](./img/incline_assembly.PNG)
 
@@ -129,23 +145,22 @@ Intel Joule box flat enclosure top
 
 ![Intel Joule Box Incline enclosure Top]()
 
-Intel Joule boox incline enclosure top
+Intel Joule box incline enclosure top
 
 <a id="org37ac3e7"></a>
 
 ## Mounting the enclosure to the robot arm
 
-![mount step 1]()
+![mount step 1](./img/mount_1_1.jpg)
 
-1. Connect the enclosure body [#3.1] and the end-effector cuff connector [#3.4] with 2 Screws [#]
+![mount step 1](./img/mount_1.jpg)
 
-![mount step 2]()
+1. Connect the enclosure body [#3.1] and the end-effector cuff connector [#3.4] with 2X screws [#5.3]
 
-2. Unscrew the Kinova Jaco's last joint's three screws, which are the three screws shoing in the image. 
+![mount step 2](./img/mount_2.jpg)
 
-![mount step 3]()
+2. Unscrew the Kinova Jaco's last joint's top three screws. And directly secure the assembled parts (enclosure body + cuff connector) to the arm with 3X screw [#5.3]
 
-3. Directly secure the assembled parts (enclosure body + cuff connector) to the arm with screw [#]
 
 
 <a id="org6f79684"></a>
@@ -154,11 +169,9 @@ Intel Joule boox incline enclosure top
 
 ### Insert the Joule into the enclosure
 
-![insert the Joule into the enclosure]()
+![mount step 3](./img/mount_3.jpg)
 
-![mount step 4]()
-
--  Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#].
+-  Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#5.1].
 
 > Please make sure the two wifi antenna would not touch each other and able to be fit in the enclosure.
 
@@ -166,27 +179,31 @@ Intel Joule boox incline enclosure top
 
 Camera Mount 1
 
-![Picture of attaching camera position 1]()
+![Picture of attaching camera position 1](./img/flat_mount.jpg)
 
 Camera Mount 2
 
-![Picture of attaching camera position 2]()
+![Picture of attaching camera position 2](./img/incline_mount.jpg)
 
 1. Install flat front camera mount:
 
-    5.1 Mount the Intel RealSense camera with 2 X screw [#]. 
+    5.1 Mount the Intel RealSense camera with 2 X screw [#5.2]. 
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
+    ![mount step camera](./img/mount_4.jpg)
+
     5.2 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
 
-    5.3 Secure the flat enclosure top with 4X screws [#]
+    ![mount step camera](./img/mount_5.jpg)
+
+    5.3 Secure the flat enclosure top with 4X screws [#5.2]
 
 2. (Optional) Install incline camera mount:
 
-    6.1 Secure the incline enclosure top with 4X screws [#]
+    6.1 Secure the incline enclosure top with 4X screws [#5.2]
 
-    6.2 Mount the camera on the enclosure.
+    6.2 Mount the camera on the enclosure with 1X screws [#5.4].
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
@@ -207,7 +224,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
 ![active_cooling](img/active_cooling.PNG)
 
-> When installing this module, you need to take off the four screws which directly on the CPU module. Please remove them carefully and screw them securely with the active cooling module.
+> When installing this module, you need to take off the four screws which directly on the CPU module. Please remove them carefully and screw them securely with the active cooling module. And please use the thermal paste sticker when connect the heat sink with the CPU. 
 
 <a id="org4b2b1a1"></a>
 
@@ -242,16 +259,21 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
 ![final connected cable image2](img/connected_2.PNG)
 
+ We drilled a hole from the hand for the DC jack to go through. 
+
+ ![dcjack Hole](img/dcjack_hole.jpg)
+
+
 -  Plugging into board
 
-![plugging into board]()
+![plugging into board](img/plug_board.jpg)
 
 
 <a id="orgdba8e15"></a>
 
 ## Cable summary
 
--   ![Picture with Joule and all the things plugged into it]()
+-   ![Picture with Joule and all the things plugged into it](img/plug_all.jpg)
 
 <a id="org84be803"></a>
 
@@ -293,8 +315,9 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
     Please build this after installing the driver.
 
-> If you are using Intel Realsense R435, you may need to change the parameter to .
->......The code to do that.
+> If you are using Intel Realsense R435, you may need to change the parameter to 
+
+> #TODO: copy code to here
 
 ## Networking Diagram
 
@@ -322,7 +345,7 @@ This option is mainly rely on C++ and ROS realsense wrapper. It compresses RGB a
 
 ## Client-side (off-board computing) Networking
 
--   We are currently using [#] TP-Link XXXX Router. 
+-   We are currently using [#10] TP-Link Router. 
 -   We set the static IP addresses for both the client side and the server side. 
 
 > For example, you may set the client side to be static as 192.168.2.171. And the joule be 192.168.2.176.
@@ -364,16 +387,18 @@ We will run the roscore on the client side.
 
 ## Bill of Material
 
-|                   Part Name                   | Num of Part |    Price   |
-|:---------------------------------------------:|:-----------:|:----------:|
-|         Intel Joule 570x Developer Kit        |      1      |   $585.00  |
-|             Intel Real Sense D435             |      1      |   $179.00  |
-|             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |
-|                  Kinova Robot                 |      1      | $40,000.00 |
-|           Intel Joule Box (3d print)          |      1      |    Free    |
-|             Wrist Mount(3d print)             |      1      |    Free    |
-|                   M3 Screws                   |     100     |            |
-|                   M3 Washer                   |      20     |            |
-|                   M2 Screws                   |     100     |            |
-|              Active cooling parts             |      1      |            |
-| Pololu 12v 2.2A step down regulator D22V22F12 |      1      |            |
+|                   Part Name                   | Num of Part |    Price   | Purchase Link |
+|:---------------------------------------------:|:-----------:|:----------:|:----------:|
+|         Intel Joule 570x Developer Kit        |      1      |   $585.00  |   ???   |
+|             Intel Real Sense D435             |      1      |   $179.00  |  https://click.intel.com/intelr-realsensetm-depth-camera-d435.html    |
+|             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |  https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0ECR5I/ref=sr_1_2?ie=UTF8&qid=1530140364&sr=8-2&keywords=pla%2B1.75mm%2Bblack&th=1    |
+|                  Kinova Robot                 |      1      | $40,000.00 |  https://www.kinovarobotics.com/en/products/robotic-arm-series    |
+|           Intel Joule Box (3d print)          |      1      |    Free    |  --    |
+|             Wrist Mount(3d print)             |      1      |    Free    |  --    |
+|                   M3 X 10 Screws                  |     6     |    ???        |    ???  |
+|                   M3 X 6 Screws                   |     5     |     ???       |   ???   |
+|                   M3 Washer       |   2 (optional) for the camera  |    ???    |  ???    |
+|                   M2 X 8 Screws                   |     4     |    ???     |  ???    |
+|              Active cooling parts             |      1      |    $32        |  https://store.gumstix.com/fansink-intel.html    |
+| Pololu 12v 2.2A step down regulator D22V22F12 |      1      |    $9.95        |  https://www.pololu.com/product/2855    |
+| Wi-Fi Router. We are using TP Link AC1900     |      1      |   $89.99         |  http://a.co/hMIWrfC   |
