@@ -153,11 +153,11 @@ Intel Joule box incline enclosure top
 
 ![mount step 1](./img/mount_1_1.jpg)
 
-![mount step 1](./img/mount_1.jpg)
+![mount step 1](./img/mount_1_ink.jpg)
 
 1. Connect the enclosure body [#3.1] and the end-effector cuff connector [#3.4] with 2X screws [#5.3]
 
-![mount step 2](./img/mount_2.jpg)
+![mount step 2](./img/mount_2_ink.jpg)
 
 2. Unscrew the Kinova Jaco's last joint's top three screws. And directly secure the assembled parts (enclosure body + cuff connector) to the arm with 3X screw [#5.3]
 
@@ -169,7 +169,7 @@ Intel Joule box incline enclosure top
 
 ### Insert the Joule into the enclosure
 
-![mount step 3](./img/mount_3.jpg)
+![mount step 3](./img/mount_3_ink.jpg)
 
 -  Secure the Intel Joule board [#1] into the enclosure with 4 X Screws [#5.1].
 
@@ -191,7 +191,7 @@ Camera Mount 2
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
-    ![mount step camera](./img/mount_4.jpg)
+    ![mount step camera](./img/mount_4_ink.jpg)
 
     5.2 Connect camera and the Intel Joule with USB type C to A 3.0 cable [#2.1]
 
@@ -257,11 +257,11 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
 ![final connected cable image1](img/connected_1.PNG)
 
-![final connected cable image2](img/connected_2.PNG)
+![final connected cable image2](img/connected_2.jpg)
 
  We drilled a hole from the hand for the DC jack to go through. 
 
- ![dcjack Hole](img/dcjack_hole.jpg)
+ ![dcjack Hole](img/dcjack_hole_1.jpg)
 
 
 -  Plugging into board
