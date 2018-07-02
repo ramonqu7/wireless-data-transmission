@@ -1,6 +1,9 @@
-# wireless-data-transmission
-current project for Personal Robotics Lab to complete wireless transmission from robot's end-effectors
+# End-effector Computing
 
-This is all of the prepare steps and archived the scripts.# End-effector Computing
+current project in Personal Robotics Lab to complete wireless transmission from robot's end-effectors
 
-Please check the [document](./wiki/end-effector-computing.md)
+Tutorial: [Tutorial Link](./wiki/end-effector-computing.md)
+
+Demo running details: [Demo Link](./wiki/Intel-Joule-ADA-Perception-Demo.md)
+
+Official (Under developing) Applications repo: [Repo Link](https://github.com/ramonidea/prl_wireless_perception)

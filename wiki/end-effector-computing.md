@@ -66,7 +66,7 @@
 
     5.3 M3 X 10mm Screw
 
-    5.4 M? X ? Screw (for incline top camera)
+    5.4 M6 X 10mm Screw (for incline top camera)
 
 6. Flat Flex, Ribbon Jumper Cables (20 pins 2.000" (50.80mm)) Molex, LLC 0152670357
 
@@ -389,16 +389,17 @@ We will run the roscore on the client side.
 
 |                   Part Name                   | Num of Part |    Price   | Purchase Link |
 |:---------------------------------------------:|:-----------:|:----------:|:----------:|
-|         Intel Joule 570x Developer Kit        |      1      |   $585.00  |   ???   |
+|         Intel Joule 570x Developer Kit        |      1      |   $585.00  |   ---   |
 |             Intel Real Sense D435             |      1      |   $179.00  |  https://click.intel.com/intelr-realsensetm-depth-camera-d435.html    |
 |             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |  https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0ECR5I/ref=sr_1_2?ie=UTF8&qid=1530140364&sr=8-2&keywords=pla%2B1.75mm%2Bblack&th=1    |
 |                  Kinova Robot                 |      1      | $40,000.00 |  https://www.kinovarobotics.com/en/products/robotic-arm-series    |
-|           Intel Joule Box (3d print)          |      1      |    Free    |  --    |
-|             Wrist Mount(3d print)             |      1      |    Free    |  --    |
-|                   M3 X 10 Screws                  |     6     |    ???        |    ???  |
-|                   M3 X 6 Screws                   |     5     |     ???       |   ???   |
-|                   M3 Washer       |   2 (optional) for the camera  |    ???    |  ???    |
-|                   M2 X 8 Screws                   |     4     |    ???     |  ???    |
+|           Intel Joule Box (3d print)          |      1      |    Free    |  N/A    |
+|             Wrist Mount(3d print)             |      1      |    Free    |  N/A    |
+|                   M3 X 10 Screws                  |     6     |    ---        |    ???  |
+|                   M6 X 10 Screws                  |     1     |    ---        |    ???  |
+|                   M3 X 6 Screws                   |     5     |     ---       |   ???   |
+|                   M3 Washer       |   2 (optional) for the camera  |    ---    |  ???    |
+|                   M2 X 8 Screws                   |     4     |    ---     |  ???    |
 |              Active cooling parts             |      1      |    $32        |  https://store.gumstix.com/fansink-intel.html    |
 | Pololu 12v 2.2A step down regulator D22V22F12 |      1      |    $9.95        |  https://www.pololu.com/product/2855    |
 | Wi-Fi Router. We are using TP Link AC1900     |      1      |   $89.99         |  http://a.co/hMIWrfC   |
