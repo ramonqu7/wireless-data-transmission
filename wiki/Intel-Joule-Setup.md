@@ -49,7 +49,9 @@ sudo apt-get install -y libsm6 libxext6 && pip3 install -U opencv-python numpy
 
 ### Install ROS
 
-We recommend to install ROS-base first on the board and then install other packages if necessary. If you installed the system on the embedded storage, it would be the best performance to install ROS-Base
+We recommend to install ROS-base first on the board and then install other packages if necessary. If you installed the system on the embedded storage, it would be the best performance to install ROS-Base with other additional packages that you need. 
+
+> If you need the install the ROS, you may need to change your software center installing settings to allow all packages being installed. 
 
 ```
 # Please also check the ROS Website to check the most updated steps to install ROS. (http://wiki.ros.org/kinetic/Installation/Ubuntu)
