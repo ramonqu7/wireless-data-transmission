@@ -70,7 +70,6 @@ source ~/.bashrc
 Dependencies for building packages
 ```
 sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools python-wstool
-sudo pip install -U python-opencv
 sudo apt-get install ros-kinetic-cv-bridge ros-kinetic-image-transport
 ```
 ## Development Environment Set up
