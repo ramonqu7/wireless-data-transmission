@@ -2,7 +2,7 @@
 
 ## Intel Joule Movidius Demo:
 
-### Caffe with SSD mobileNet -> video object detection
+#### Caffe with SSD mobileNet -> video object detection
 Results are:
 - 1. Video:contrapicado_traffic_shortened_960x540.mp4. video resolution: 960.0 x 540.0
   - CPU Per: 23.3669340974
@@ -29,5 +29,20 @@ Results are:
   - Mem Average: 87827321.9541
   - Frame Count:301
   - Second per frame:0.104320315428
+
+## Jetson
+
+#### SSD MobileNet with PyTorch:
+Results are: 
+- 1. Video:contrapicado_traffic_shortened_960x540.mp4. video resolution: 960.0 x 540.0
+  - Processing Time Per Frame: 1.0628144820258107s
+- 2. Video:bus_station_6094_960x540.mp4. video resolution: 960.0 x 540.0
+  - Processing Time Per Frame: 2.1887673853284717s
+- 3. Video:motorcycle_6098_shortened_960x540.mp4. video resolution: 960.0 x 540.0
+  - Processing Time Per Frame: 1.6702866859436034
+- 4. Video:police_car_6095_shortened_960x540.mp4. video resolution: 960.0 x 540.0
+  - Processing Time Per Frame: 1.235303331549366s
+- 5. Video:scooters_5638_shortened_960x540.mp4. video resolution: 960.0 x 540.0
+  - Processing Time Per Frame: 1.005342649066963s
 
 
