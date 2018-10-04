@@ -402,4 +402,6 @@ We will run the roscore on the client side.
 |                   M2 X 8 Screws                   |     4     |    ---     |  ???    |
 |              Active cooling parts             |      1      |    $32        |  https://store.gumstix.com/fansink-intel.html    |
 | Pololu 12v 2.2A step down regulator D22V22F12 |      1      |    $9.95        |  https://www.pololu.com/product/2855    |
+| DC Barrel Jack Connector |      1      |    $2.13        |  https://www.digikey.com/product-detail/en/tensility-international-corp/CA-2189/CP-2189-ND/568580    |
+| Molex 20-conductor Ribbon Cable |      1      |    $2.64        |  https://www.digikey.com/product-detail/en/molex-llc/0152670369/WM10552-ND/4427241    |
 | Wi-Fi Router. We are using TP Link AC1900     |      1      |   $89.99         |  http://a.co/hMIWrfC   |
