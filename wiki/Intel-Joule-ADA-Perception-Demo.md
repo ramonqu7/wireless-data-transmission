@@ -3,13 +3,13 @@
 ### Steps to Boot the Joule
 - Make sure the board is securely mounted in the Joule box. 
 - Plug in the power jack.
-- Wait for 50 seconds and reset the MicroSD card
-> This is an ongoing issue of booting with microSD card. We have to reset the microSD during the booting sequence. Otherwise, the microSD card would not be recognized.
+> If the system did not successfully boot up, please go through the following steps:
+    - Wait for 50 seconds and reset the MicroSD card
+    > This issue can be solved, if you mount the micro sd card on `/` and install the system on it.
 - You are then able to SSH to Joule with 
 ```
-ssh jouleu@192.168.2.176
+ssh jouleu@YOUR.IP.Add.ress
 ```
-> The other Intel Joule has been set up as `ssh joule@192.168.2.170`
 
 ### Start Intel Realsense Camera
 
@@ -23,7 +23,11 @@ cd ~
 > It has been set default that you need to run roscore on weeboo (IP address is `192.168.2.171`)
 > If you are running roscore at other machines with different IP address, please specify the IP address before running the script.
 > ``` 
-> export ROS_MASTER_URI="http://192.168.2.X:11311"
+> export ROS_MASTER_URI=http://192.168.2.YOUR_MACHINE_IP:11311
+> ```
+> If you cannot publish topics, please run:
+> ```
+> export ROS_IP="YOUR.MACHINE.IP.ADDRESS"
 > ```
 
 - You can modify the camera configurations which defined in the Intel RealSense Camera ROS-Wrapper.
