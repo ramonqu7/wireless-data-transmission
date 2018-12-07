@@ -385,14 +385,14 @@ We will run the roscore on the client side.
 
 <a id="orgdr23442"></a>
 
-## Bill of Material
+## Bill of Materials
 
 |                   Part Name                   | Num of Part |    Price   | Purchase Link |
 |:---------------------------------------------:|:-----------:|:----------:|:----------:|
+|                  Kinova Robot                 |      1      | Pricey |  https://www.kinovarobotics.com/en/products/robotic-arm-series    |
 |         Intel Joule 570x Developer Kit        |      1      |   $585.00  |   ---   |
 |             Intel Real Sense D435             |      1      |   $179.00  |  https://click.intel.com/intelr-realsensetm-depth-camera-d435.html    |
 |             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |  https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0ECR5I/ref=sr_1_2?ie=UTF8&qid=1530140364&sr=8-2&keywords=pla%2B1.75mm%2Bblack&th=1    |
-|                  Kinova Robot                 |      1      | $40,000.00 |  https://www.kinovarobotics.com/en/products/robotic-arm-series    |
 |           Intel Joule Box (3d print)          |      1      |    Free    |  N/A    |
 |             Wrist Mount(3d print)             |      1      |    Free    |  N/A    |
 |                   M3 X 10 Screws                  |     6     |    ---        |    ???  |
