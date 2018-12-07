@@ -1,12 +1,12 @@
 ## Deploy Joule Demos with ADA
 
 ### Steps to Boot the Joule
-- Make sure the board is securely mounted in the Joule box. 
+- Make sure the board is securely mounted in the Joule box.
 - Plug in the power jack.
 > If the system did not successfully boot up, please go through the following steps:
     - Wait for 50 seconds and reset the MicroSD card
     > This issue can be solved, if you mount the micro sd card on `/` and install the system on it.
-- You are then able to SSH to Joule with 
+- You are then able to SSH to Joule with
 ```
 ssh jouleu@YOUR.IP.Add.ress
 ```
@@ -22,7 +22,7 @@ cd ~
 
 > It has been set default that you need to run roscore on weeboo (IP address is `192.168.2.171`)
 > If you are running roscore at other machines with different IP address, please specify the IP address before running the script.
-> ``` 
+> ```
 > export ROS_MASTER_URI=http://192.168.2.YOUR_MACHINE_IP:11311
 > ```
 > If you cannot publish topics, please run:
@@ -57,12 +57,15 @@ Then you may use `Rviz` to view the point cloud data with subscribing to **Topic
    > _We have disabled the commands which checking the frame id._
    > _But we are also working on other solutions to make the frame synchronization issue._
 
+    > Potential solution would be using custom-defined message type to combine color and depth image together and send together
+    > within a message.
+
 
 - Using Image Transport
 
-    The local reconstruct point cloud requires `Color` and `aligned_depth_to_color` frames. We applied `Compressed Image Transport` on the color frames and `CompressedDepth Image transport` on the depth (Aligned depth to color) frames. 
+    The local reconstruct point cloud requires `Color` and `aligned_depth_to_color` frames. We applied `Compressed Image Transport` on the color frames and `CompressedDepth Image transport` on the depth (Aligned depth to color) frames.
 
-    But in order to make the wireless transmission smoothly, we may need to set the dynamic parameters of the transport, like the compression quality. 
+    But in order to make the wireless transmission smoothly, we may need to set the dynamic parameters of the transport, like the compression quality.
 
     ```
     #After running the camera on the joule site, open another ssh window to joule.

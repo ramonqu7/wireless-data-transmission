@@ -1,4 +1,4 @@
-# End-effector Computing
+# **Wireless Perception Module** - Build From Scratch Tutorial
 
 ## Yiren (Ramon) Qu, Rosario Scalise
 
@@ -31,23 +31,23 @@
 6.  [Running](#orgdd11d53)
 
 
-<a id="org11f013c"></a>
 
-# What you'll need
+
+# <a id="org11f013c">What you'll need </a>
 > See [Appendix](orgdrr23431) for an itemized list with purchase links (updated as of June 2018).
 1.  Intel Joule 570X Developer Kit (or comparable board)
 
 ![Intel Joule](img/joule.jpg)
 
-2.  Intel RealSense D415 or D435 RGBD Camera (or openni2 support RGBD cameras)
+2.  Intel RealSense D415 or D435 RGBD Camera (or Openni2 support RGBD cameras)
 
     2.1 USB type C to A 3.0 cable
-    
+
     > You may use the cable included with the Joule, or order a shorter one.
 
 ![Intel RealSense](img/realsense.png)
 
-3.  3D Printed Parts 
+3.  3D Printed Parts
     > Models and printed object can be found in the [3D File section](#orgf55114f)
 
     3.1 Intel Joule enclosure body
@@ -74,7 +74,7 @@
 
 7. DC jack for Joule power source (you can "borrow" one from most standard wall-wart style adapters).
 
-![DC Jack](./img/dcjack.png)
+![DC Jack](./img/dc-jack.jpg)
 
 8. Active Cooling System for Intel Joule Module
 
@@ -83,14 +83,13 @@
 9. Optional based upon resources, but we used the Kinova Jaco 7-DOF manipulator (you could also use your own robot and modify the 'cuff mount')
 
 10. Wi-Fi Router. We are using TP Link AC1900.
+![](./img/wifi-router.jpg)
 
-<a id="org437c511"></a>
 
-# 🔧 Mechanical
 
-<a id="orgf55114f"></a>
+# 🔧 <a id="org437c511">Mechanical</a>
 
-## Printing the 3D files
+## <a id="orgf55114f">Printing the 3D files</a>
 
 -   Here are the [3D Print-ready files](./3d_model/) for the Intel Joule housing box and mount with the end-effector.
 
@@ -147,9 +146,9 @@ Intel Joule box flat enclosure top
 
 Intel Joule box incline enclosure top
 
-<a id="org37ac3e7"></a>
 
-## Mounting the enclosure to the robot arm
+
+## <a id="org37ac3e7">Mounting the enclosure to the robot arm</a>
 
 ![mount step 1](./img/mount_1_1.jpg)
 
@@ -163,9 +162,9 @@ Intel Joule box incline enclosure top
 
 
 
-<a id="org6f79684"></a>
 
-## Fitting the hardware to the 3D enclosure
+
+## <a id="org6f79684">Fitting the hardware to the 3D enclosure</a>
 
 ### Insert the Joule into the enclosure
 
@@ -187,7 +186,7 @@ Camera Mount 2
 
 1. Install flat front camera mount:
 
-    5.1 Mount the Intel RealSense camera with 2 X screw [#5.2]. 
+    5.1 Mount the Intel RealSense camera with 2 X screw [#5.2].
 
     > Make sure the camera is securely mounted with the enclosure, which would not resulting much vibration when the end effector's moving
 
@@ -218,40 +217,38 @@ Parts[#8]
 
 -   ![Picture of cooler](./img/cooling.png)
 
-You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html). 
+You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html).
 
 The problem we encoutered was that the Joule would automatically shutdown due to the high temperatures. The passive cooling option is not a sufficient cooling option when the camera is running. With active cooling, we were able to run the camera at full FPS indefinitely without issue.
 
 ![active_cooling](img/active_cooling.PNG)
 
-> When installing this module, you need to take off the four screws which directly on the CPU module. Please remove them carefully and screw them securely with the active cooling module. And please use the thermal paste sticker when connect the heat sink with the CPU. 
-
-<a id="org4b2b1a1"></a>
-
-# ⚡️ Electrical
+> When installing this module, you need to take off the four screws which directly on the CPU module. Please remove them carefully and screw them securely with the active cooling module. And please use the thermal paste sticker when connect the heat sink with the CPU.
 
 
-<a id="org7981dc9"></a>
 
-## 🔌 Recommended power source
+# ⚡️ <a id="org4b2b1a1">Electrical</a>
+
+
+
+
+## 🔌 <a id="org7981dc9">Recommended power source</a>
 
 -   Intel Joule with Intel RealSense D435 running requires ≥ 1.5A @ 12V
 > ❗️Intel joule only requires ~0.6A @ 12V to boot.
 -   Kinova Mico Joint 6 supplies max 3A @ 24V
--   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule. 
+-   Inside the hand, there is limited space to store the power conversion circuit. We use buck convertor from Pololu [#4] to convert the power from Kinova arm to supply intel Joule.
 
 
-<a id="org4e38be8"></a>
 
-## Fabricating the cables
+## <a id="org4e38be8">Fabricating the cables</a>
 
 ![schematic diagram](img/elec.PNG)
 
--  The electronic schematic diagram of the power system. 
+-  The electronic schematic diagram of the power system.
 
-<a id="org54e2305"></a>
 
-## Connecting the cables
+## <a id="org54e2305">Connecting the cables</a>
 
 -   The final connected cable
 
@@ -259,7 +256,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
 ![final connected cable image2](img/connected_2.jpg)
 
- We drilled a hole from the hand for the DC jack to go through. 
+ We drilled a hole from the hand for the DC jack to go through.
 
  ![dcjack Hole](img/dcjack_hole_1.jpg)
 
@@ -273,7 +270,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
 ## Cable summary
 
--   ![Picture with Joule and all the things plugged into it](img/plug_all.jpg)
+![Picture with Joule and all the things plugged into it](img/plug_all.jpg)
 
 <a id="org84be803"></a>
 
@@ -284,7 +281,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 ## Installing the OS to the Joule
 
 - Please check [this post](./Intel-Joule-Setup.md) to install the OS onto the Intel Joule.
-- In my project, I used Lubuntu (Ubuntu/Linux core 16.03 LTS) with ROS-Desktop version installed. 
+- In my project, I used Lubuntu (Ubuntu/Linux core 16.03 LTS) with ROS-Desktop version installed.
 
 
 <a id="org4290339"></a>
@@ -295,7 +292,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 
     - [ROS Image Transport Plugins](https://github.com/ros-perception/image_transport_plugins.git)
 
-    We used Compressed Image Transport Plugins to compressed the RGB Images. 
+    We used Compressed Image Transport Plugins to compressed the RGB Images.
 
     - [ROS Image Pipeline](https://github.com/ros-perception/image_pipeline.git)
 
@@ -304,7 +301,7 @@ The problem we encoutered was that the Joule would automatically shutdown due to
     > And their dependency packages `image_common` and `image_geometry`
 
     - [RGBD_Message](https://github.com/ramonidea/prl_wireless_perception/tree/master/rgbd_message)
-        
+
         This is a custom package trying to solve the problem that depth and color images are not arriving at the same time. This send a message with serialized rgb and depth image data. And we used JPEG lossy compression on Color and lossless compression on Depth.
 
 - [Realsense Camera Driver](https://github.com/IntelRealSense/librealsense)
@@ -314,10 +311,6 @@ The problem we encoutered was that the Joule would automatically shutdown due to
 - [RealSense Camera ROS Wrapper](https://github.com/intel-ros/realsense)
 
     Please build this after installing the driver.
-
-> If you are using Intel Realsense R435, you may need to change the parameter to 
-
-> #TODO: copy code to here
 
 ## Networking Diagram
 
@@ -333,7 +326,7 @@ This option is mainly rely on Python codec and ROS realsense wrapper. It compres
 
 Option 2
 
-This option is mainly rely on C++ and ROS realsense wrapper. It compresses RGB and Depth image separately into two topics: `/camera/color/image_raw/compressed` and `/camera/depth/image_raw/compressedDepth`. And the client side may use `Message_filter` to synchronize those two topics. 
+This option is mainly rely on C++ and ROS realsense wrapper. It compresses RGB and Depth image separately into two topics: `/camera/color/image_raw/compressed` and `/camera/depth/image_raw/compressedDepth`. And the client side may use `Message_filter` to synchronize those two topics.
 
 <a id="orgea01b4a"></a>
 
@@ -345,12 +338,10 @@ This option is mainly rely on C++ and ROS realsense wrapper. It compresses RGB a
 
 ## Client-side (off-board computing) Networking
 
--   We are currently using [#10] TP-Link Router. 
--   We set the static IP addresses for both the client side and the server side. 
+-   We are currently using [#10] TP-Link Router.
+-   We set the static IP addresses for both the client side and the server side.
 
-> For example, you may set the client side to be static as 192.168.2.171. And the joule be 192.168.2.176.
-
-We will run the roscore on the client side. 
+We will run the _**roscore**_ on the client side.
 
 <a id="orgc67814a"></a>
 
@@ -363,14 +354,14 @@ We will run the roscore on the client side.
 
 ## ROS
 
--   use command `ifconfig` to retrieve the IP address from your workstation. 
+-   use command `ifconfig` to retrieve the IP address from your workstation.
 
 > The ip addresses should be always the same, because we save the ip address in the router setting from the last step.
 
--  Please make sure the Joule's `ROS_MASTER_URI` has been set to that ip address. And set the `ROS_IP` correctly. 
+-  Please make sure the Joule's `ROS_MASTER_URI` has been set to that ip address. And set the `ROS_IP` correctly.
 
 
-    As an example, if your workstation (ip address `192.168.1.10`) running `roscore` has a wireless adapter IP of `192.168.1.12`, then make sure your terminal running the ROS environment has its `ROS_MASTER_URI` pointed to the workstation like so: `export ROS_MASTER_URI=http://192.168.1.10:11311` and set joule ip address with command: `export ROS_IP=192.168.1.12`
+> As an example, if your workstation (ip address `192.168.1.10`) running `roscore` has a wireless adapter IP of `192.168.1.12`, then make sure your terminal running the ROS environment has its `ROS_MASTER_URI` pointed to the workstation like so: `export ROS_MASTER_URI=http://192.168.1.10:11311` and set joule ip address with command: `export ROS_IP=192.168.1.12`
 
 
 <a id="orgdd11d53"></a>
@@ -394,12 +385,12 @@ We will run the roscore on the client side.
 |             Intel Real Sense D435             |      1      |   $179.00  |  https://click.intel.com/intelr-realsensetm-depth-camera-d435.html    |
 |             3D PLA 1.75mm Filement            |  1kg Spool  |   $20.00   |  https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0ECR5I/ref=sr_1_2?ie=UTF8&qid=1530140364&sr=8-2&keywords=pla%2B1.75mm%2Bblack&th=1    |
 |           Intel Joule Box (3d print)          |      1      |    Free    |  N/A    |
-|             Wrist Mount(3d print)             |      1      |    Free    |  N/A    |
-|                   M3 X 10 Screws                  |     6     |    ---        |    ???  |
-|                   M6 X 10 Screws                  |     1     |    ---        |    ???  |
-|                   M3 X 6 Screws                   |     5     |     ---       |   ???   |
-|                   M3 Washer       |   2 (optional) for the camera  |    ---    |  ???    |
-|                   M2 X 8 Screws                   |     4     |    ---     |  ???    |
+|Wrist Mount(3d print)|1|Free|N/A|
+|M3 X 10 Screws| 6 |---| https://www.mcmaster.com/94500a223 |
+|                   M6 X 10 Screws                  |     1     |    ---        | https://www.mcmaster.com/94500a314 |
+|                   M3 X 6 Screws                   |     5     |     ---       |   https://www.mcmaster.com/91294a126   |
+|                   M3 Washer       |   2 (optional) for the camera  |    ---    | https://www.mcmaster.com/90965a130 |
+|                   M2 X 8 Screws                   |     4     |    ---     |  https://www.mcmaster.com/91294a005    |
 |              Active cooling parts             |      1      |    $32        |  https://store.gumstix.com/fansink-intel.html    |
 | Pololu 12v 2.2A step down regulator D22V22F12 |      1      |    $9.95        |  https://www.pololu.com/product/2855    |
 | DC Barrel Jack Connector |      1      |    $2.13        |  https://www.digikey.com/product-detail/en/tensility-international-corp/CA-2189/CP-2189-ND/568580    |
