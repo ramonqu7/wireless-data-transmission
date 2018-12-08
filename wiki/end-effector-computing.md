@@ -215,7 +215,7 @@ Camera Mount 2
 
 Parts[#8]
 
--   ![Picture of cooler](./img/cooling.png)
+![Picture of cooler](./img/cooling.png)
 
 You may purchase the part from this [site](https://store.gumstix.com/fansink-intel.html).
 
