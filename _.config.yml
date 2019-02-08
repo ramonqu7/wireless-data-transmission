@@ -1,0 +1,10 @@
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+    wiki/end-effector-computing.md
+    wiki/Intel-Joule-ADA-Perception-Demo.md
+    wiki/Intel-Joule-Setup.md
+
